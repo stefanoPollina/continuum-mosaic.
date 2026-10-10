@@ -2964,4 +2964,40 @@ function setup(){
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
 })();
-</script></body></html>
+</script></body>
+<style id="cmV14TabletTripletAccessibility">
+/* Keep all three octave surfaces available at every viewport width.
+   A horizontally scrollable instrument strip replaces the earlier hide-on-tablet rules. */
+#cmTripleHandpanRow {display:grid!important;grid-template-columns:repeat(3,minmax(260px,1fr))!important;gap:12px!important;overflow-x:auto!important;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;padding:8px 2px 16px;align-items:start}
+#cmTripleHandpanRow .cmPanCell[data-octave="-1"],#cmTripleHandpanRow .cmPanCell[data-octave="1"] {display:block!important}
+#cmTripleHandpanRow .cmPanCell {min-width:260px!important}
+.cmV10Triplet {display:grid!important;grid-template-columns:repeat(3,minmax(260px,1fr))!important;overflow-x:auto!important;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;gap:12px!important;padding:8px 2px 16px}
+.cmV10Triplet .cmV10Cell[data-shift="-1"],.cmV10Triplet .cmV10Cell[data-shift="1"] {display:block!important}
+.cmV10Triplet .cmV10Cell {min-width:260px!important}
+#cmTripleHandpanRow button,.cmV10Triplet [data-note] {touch-action:none!important;-webkit-user-select:none!important;user-select:none!important}
+</style>
+<script id="cmV14SideInstrumentEventIsolation">
+/* The original side instrument clones use separate voice dispatchers.
+   Capture phase ensures touch/pointer gestures on a clone cannot bubble to
+   another instrument's ancestor handlers. No changes to audio synthesis. */
+(function(){
+  function isolate(e){
+    if(e.type==='pointerdown'&&e.pointerType==='mouse'&&e.button!==0)return;
+    e.stopPropagation();
+  }
+  function install(){
+    document.querySelectorAll('.cmV10Triplet .cmV10Cell[data-shift="-1"] [data-note],.cmV10Triplet .cmV10Cell[data-shift="1"] [data-note],#cmTripleHandpanRow .cmPanCell[data-octave="-1"] button,#cmTripleHandpanRow .cmPanCell[data-octave="1"] button').forEach(function(b){
+      if(b.dataset.cmV14Isolated)return;
+      b.dataset.cmV14Isolated='1';
+      b.addEventListener('pointerdown',isolate);
+      b.addEventListener('touchstart',isolate,{passive:true});
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install);
+  else install();
+  const observer=new MutationObserver(install);
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){observer.observe(document.body,{childList:true,subtree:true})});
+  else observer.observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+</html>
