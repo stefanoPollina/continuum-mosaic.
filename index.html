@@ -2964,7 +2964,67 @@ function setup(){
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
 })();
-</script></body>
+</script>
+<script id="cmV15SidePadReliableInput">
+/* Rebind cloned octave instruments directly. Cloning the buttons removes
+   the prior experimental listeners, avoiding competing touch/pointer paths. */
+(function(){
+  const seen=new WeakSet();
+  function bind(button,kind,shift,index){
+    if(seen.has(button))return;
+    const clean=button.cloneNode(true);
+    button.replaceWith(clean);
+    seen.add(clean);
+    clean.style.touchAction='none';
+    let lastPointer=0;
+    function play(e){
+      if(e.type==='pointerdown' && e.pointerType==='mouse' && e.button!==0)return;
+      if(e.cancelable)e.preventDefault();
+      e.stopPropagation();
+      lastPointer=Date.now();
+      try{
+        if(kind==='handpan'){
+          if(!ac)init();
+          if(!ac)return;
+          const start=()=>tonalHitVoice(index,ac.currentTime+.012,1,100,.35,shift);
+          if(ac.state==='suspended')ac.resume().then(start).catch(console.error);
+          else start();
+        }else{
+          window.cm29SideStrike?.(kind,index,shift);
+        }
+      }catch(err){console.error('Octave pad:',err)}
+    }
+    if(window.PointerEvent){
+      clean.addEventListener('pointerdown',play,{passive:false});
+    }else{
+      clean.addEventListener('touchstart',play,{passive:false});
+      clean.addEventListener('mousedown',play);
+    }
+    clean.addEventListener('click',function(e){
+      if(Date.now()-lastPointer<650){e.preventDefault();e.stopPropagation();}
+    });
+  }
+  function refresh(){
+    document.querySelectorAll('#cmTripleHandpanRow .cmPanCell[data-octave="-1"],#cmTripleHandpanRow .cmPanCell[data-octave="1"]').forEach(cell=>{
+      const shift=Number(cell.dataset.octave);
+      cell.querySelectorAll('.tonalPads button').forEach((b,i)=>bind(b,'handpan',shift,i));
+    });
+    document.querySelectorAll('.cmV10Triplet .cmV10Cell[data-shift="-1"],.cmV10Triplet .cmV10Cell[data-shift="1"]').forEach(cell=>{
+      const shift=Number(cell.dataset.shift);
+      const kind=cell.closest('.cmV10Triplet')?.querySelector('#cm29tongue')?'tongue':'bal';
+      cell.querySelectorAll('[data-note]').forEach(b=>bind(b,kind,shift,Number(b.dataset.note)));
+    });
+  }
+  function start(){
+    refresh();
+    const observer=new MutationObserver(refresh);
+    observer.observe(document.body,{subtree:true,childList:true});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);
+  else start();
+})();
+</script>
+</body>
 <style id="cmV14TabletTripletAccessibility">
 /* Keep all three octave surfaces available at every viewport width.
    A horizontally scrollable instrument strip replaces the earlier hide-on-tablet rules. */
