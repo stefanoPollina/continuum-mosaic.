@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Mosaic Beta · Continuum Engine</title><style>
+<html lang="en"><head><script id="cm0241PrepaintTheme">(function(){try{var t=JSON.parse(localStorage.getItem('cm0231Theme')||'{}');var n=['midnight','nebula','chromatic'].includes(t.theme)?t.theme:'midnight';document.documentElement.setAttribute('data-cm-boot-theme',n);document.documentElement.setAttribute('data-cm-boot-reactive',t.reactive?'on':'off')}catch(e){document.documentElement.setAttribute('data-cm-boot-theme','midnight')}})();</script><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Continuum Mosaic Beta 0242 · Instrument Transparency Refinement</title><style>
 :root{color-scheme:dark;--bg:#0b1017;--panel:#1a2430;--edge:#394d5e;--gold:#efba65;--teal:#7de0ca;--txt:#e9f0f5}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:14px system-ui,sans-serif}header{display:flex;gap:9px;align-items:center;flex-wrap:wrap;padding:14px 20px;background:#17212d;border-bottom:1px solid var(--edge)}h1{font-size:20px;margin:0 12px 0 0;letter-spacing:.06em}button,select,input{font:inherit}button,select{background:#283847;color:white;border:1px solid #526677;border-radius:6px;padding:7px 10px;cursor:pointer}button:hover{border-color:var(--gold)}button.active{background:#375c4d}#status{color:var(--teal);margin-left:auto}.intro{padding:11px 20px;color:#b9c6d2}.rack{position:relative;min-width:1600px;min-height:2280px;margin:0 16px 20px;border:1px solid #30414e;border-radius:12px;background:radial-gradient(ellipse at top,#17212d,#0b1017 70%);overflow:hidden}svg{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}svg path{fill:none;stroke-width:3.5;pointer-events:stroke;cursor:pointer;filter:drop-shadow(0 1px 3px #000)}.module{position:absolute;z-index:2;width:255px;border:1px solid #526575;border-radius:10px;background:linear-gradient(150deg,#243444,#15202a);box-shadow:0 12px 28px #0008}.module h2{font-size:14px;letter-spacing:.07em;margin:0;padding:12px;background:#2a3947;border-radius:9px 9px 0 0;cursor:move;user-select:none}.module .inside{padding:10px 12px}.control{display:grid;grid-template-columns:78px 1fr 42px;align-items:center;gap:6px;margin:8px 0}.control output{text-align:right;color:var(--gold);font-size:12px}.control input[type=range]{width:100%;accent-color:var(--gold)}.control select{width:100%;padding:4px}.ports{display:flex;justify-content:space-between;gap:5px;flex-wrap:wrap;border-top:1px solid #3b4d5b;margin-top:12px;padding-top:11px}.port{display:inline-flex;align-items:center;gap:4px;background:#111b24;border:1px solid #65798a;border-radius:6px;padding:5px;font-size:10px;cursor:pointer;user-select:none}.port:before{content:'';width:11px;height:11px;border-radius:50%;border:2px solid currentColor}.port.out{color:var(--gold)}.port.in{color:var(--teal)}.port.selected{outline:2px solid white}.stepgrid{display:grid;grid-template-columns:repeat(8,1fr);gap:5px;margin:10px 0}.step{padding:8px 0;font-size:12px;position:relative}.step.on:after{content:'';position:absolute;bottom:2px;left:25%;width:50%;height:3px;background:var(--teal)}.step.playing{background:#8b622f}.step.chosen{outline:2px solid var(--gold)}.edit{background:#111b24;padding:8px;border-radius:7px}.small{font-size:11px;color:#b5c3ce;line-height:1.5}.transport{display:flex;gap:5px;flex-wrap:wrap}.transport button{font-size:11px;padding:6px}.meter{height:9px;border-radius:5px;background:#0c151d;overflow:hidden}.meter i{display:block;background:var(--teal);height:100%;width:0%}.legend{padding:0 20px 24px;color:#aebfca}.voiceA{border-top:3px solid #efba65}.voiceB{border-top:3px solid #80b8ff}.sectionLabel{position:absolute;z-index:0;color:#7c91a5;font-size:15px;letter-spacing:.25em;font-weight:700}body{overflow-x:hidden}.rackScroll{width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;padding-bottom:12px}.rack{width:1600px;min-width:1600px;max-width:none;overflow:visible;margin:0 0 16px 0}.rackNav{display:flex;align-items:center;gap:8px;padding:8px 16px;flex-wrap:wrap}.rackNav button{min-width:72px}.rackNav .small{flex:1;min-width:180px}@media(max-width:700px){header{padding:10px;gap:6px}h1{font-size:17px;width:100%}.intro{padding:9px 12px}.rackNav{padding:8px 12px}.rackScroll{border-top:1px solid #30414e;border-bottom:1px solid #30414e}}
 
 .drumPanel{margin:12px 16px 22px;padding:16px;border:1px solid #536878;border-radius:12px;background:linear-gradient(130deg,#243444,#121c25)}.drumEcho{margin:14px 0;padding:12px;border:1px solid #88744c;border-radius:9px;background:#1d242a}.drumEcho h3{margin:0 0 10px;font-size:13px;letter-spacing:.07em;color:#eac184}.drumPanel h2{margin:0 0 8px;font-size:18px}.drumGrid{display:grid;grid-template-columns:92px repeat(16,minmax(27px,1fr));gap:4px;align-items:center;min-width:660px}.drumGrid button{padding:8px 0;min-width:0;font-size:11px}.drumGrid button.hit{background:#8a6330;border-color:#efba65}.drumGrid button.now{outline:2px solid #7de0ca}.drumScroll{overflow-x:auto;padding:8px 0}.drumControls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.drumControls label{font-size:12px;color:#c9d5df}.drumControls input{width:100px;vertical-align:middle}
@@ -616,7 +616,175 @@ body > #cmFinalInfoPane {position:relative!important;inset:auto!important;float:
 .brandMasthead .brandBeta{font-size:clamp(8px,1vw,10px)!important;letter-spacing:.04em!important;line-height:1.2!important;color:#edf3f6!important}
 .brandMasthead .brandDescriptor{font-size:clamp(8px,1.05vw,10px)!important;letter-spacing:.04em!important;line-height:1.3!important;margin-top:3px!important;color:#718897!important;max-width:94vw!important}
 </style>
-</head><body class="cm31fStartup"><style id="cm229AccessStyles">#cm229Access{position:sticky;top:0;z-index:9999;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:9px 12px;background:#101f2bef;border-bottom:1px solid #4a6d84;color:#e6eef4;font:12px system-ui,sans-serif;backdrop-filter:blur(8px)}#cm229Access a{color:#e8f5ff;text-decoration:none;border:1px solid #53788f;background:#29485d;padding:7px 11px;border-radius:6px;font-weight:650}#cm229Access a:focus-visible{outline:2px solid #f3d28e}#cm229Access .cm229note{color:#b9cedc}#cmMixer226,#cmVintage211,#cmVintageLive213{scroll-margin-top:80px}#cmMixer226 .cmMixBanks{position:sticky;top:0;z-index:3;background:#142838;padding:8px 0}#cmVintage211 select[data-p=preset],#cmVintageLive213 select[data-p=preset]{border:2px solid #b58c58}</style><nav id="cm229Access" aria-label="Performance console quick navigation"><strong>CONTINUUM MOSAIC · 0229</strong><a href="#cmMixer226">48-CHANNEL MIXER</a><a href="#cmVintage211">SYNTH VINTAGE · 35 RIGS</a><a href="#cmVintageLive213">LIVE VINTAGE · 35 RIGS</a><span class="cm229note">Mixer: 4 banks × 12 channels · Vintage: open RIG PRESET selector</span></nav><div aria-label="Continuum Mosaic, Continuum Mosaic" class="brandMasthead"><svg aria-label="Intertwined waveforms representing Continuum Mosaic" role="img" viewbox="0 0 280 62" xmlns="http://www.w3.org/2000/svg"><path d="M20 31 C55 -7 86 70 140 31 S225 -7 260 31" fill="none" stroke="#80c6d6" stroke-linecap="round" stroke-width="2.8"></path><path d="M20 31 C55 69 86 -8 140 31 S225 69 260 31" fill="none" opacity=".85" stroke="#d4a86c" stroke-linecap="round" stroke-width="2.8"></path><circle cx="20" cy="31" fill="#e3eaf0" r="3.4"></circle><circle cx="80" cy="43" fill="#e3eaf0" r="3.4"></circle><circle cx="140" cy="31" fill="#e3eaf0" r="3.4"></circle><circle cx="200" cy="19" fill="#e3eaf0" r="3.4"></circle><circle cx="260" cy="31" fill="#e3eaf0" r="3.4"></circle></svg><div class="brandContinuum">CONTINUUM</div><div class="brandMosaic">MOSAIC</div><div class="brandBeta">BETA</div><div class="brandDescriptor">AN INTEGRATED MODULAR SONIC PERFORMANCE ENVIRONMENT</div></div><header><h1 style="font-size:13px;letter-spacing:.07em">SYNTHESIS CONTROL</h1><button id="start">ENABLE AUDIO</button><button id="play">▶ PLAY</button><button id="stop">■ STOP</button><button id="reset">RESET CABLES</button><button id="random">RANDOMISE STEPS</button><button id="save">SAVE PATCH</button><button id="load">LOAD PATCH</button><input accept="application/json" hidden="" id="file" type="file"/><span id="status">Ready</span></header>
+<style id="cm0238LowLightCorrections">
+/* 0238: low-light contrast and translucency corrections. Visual only. */
+body[data-cm-theme] .keyboardWhite,body[data-cm-theme] #keyboardKeys .keyboardWhite{background:linear-gradient(180deg,#fffefa,#e5e5df)!important;color:#303035!important;border-color:#8b8d8b!important;box-shadow:inset 0 -5px 8px #9a9a9120!important;opacity:1!important}
+body[data-cm-theme] .keyboardBlack,body[data-cm-theme] #keyboardKeys .keyboardBlack{background:linear-gradient(180deg,#282a2d,#050506)!important;color:#f0f0f0!important;border-color:#080808!important;opacity:1!important;z-index:4!important}
+body[data-cm-theme] .keyboardWhite.pressed{background:#c5e6d9!important}
+body[data-cm-theme] .keyboardBlack.pressed{background:#415d60!important}
+body[data-cm-theme] #cmPatchBay{background:linear-gradient(135deg,rgba(10,11,13,.96),rgba(21,18,19,.92) 55%,rgba(64,30,22,.35))!important;border-color:rgba(144,94,80,.70)!important}
+body[data-cm-theme] .synthLabCard{background:linear-gradient(135deg,rgba(19,21,24,.79),rgba(26,27,31,.76) 62%,rgba(40,37,32,.48))!important;border-color:rgba(121,132,136,.63)!important}
+body[data-cm-theme] .synthLabCard input[type=range]{accent-color:#dca075!important;opacity:1!important}
+body[data-cm-theme] .synthLabCard label{color:#e6e6e1!important}
+body[data-cm-theme] .drumGrid button.hit,body[data-cm-theme] .microStepGroup button.hit{background:#b65325!important;border-color:#ffa14e!important;color:#fff5df!important;box-shadow:inset 0 0 0 1px #e88943!important;font-weight:750!important}
+body[data-cm-theme] .earthSteps button.hit,body[data-cm-theme] #earthPanel button.hit{background:#255e46!important;border-color:#68d89a!important;color:#e7ffef!important;font-weight:750!important}
+body[data-cm-theme] #earthPanel,body[data-cm-theme] #tonalPanel,body[data-cm-theme] #cm29fEarthFamily,body[data-cm-theme] #cmTripleHandpanRow{background:linear-gradient(135deg,rgba(12,17,17,.31),rgba(23,29,27,.21))!important;border-color:rgba(104,142,122,.54)!important}
+body[data-cm-theme] #tonalPads,body[data-cm-theme] .tonalPads,body[data-cm-theme] #cm29balafon,body[data-cm-theme] #cm29 .cm29surface{background:rgba(10,14,14,.16)!important;box-shadow:none!important}
+body[data-cm-theme] #cm29balafon .cm29bar{background:linear-gradient(180deg,rgba(114,97,80,.23),rgba(28,28,27,.20))!important;border-color:rgba(170,145,117,.67)!important;box-shadow:none!important}
+body[data-cm-theme] #cm29balafon .cm29bar:before{opacity:.24!important;filter:saturate(.45)!important}
+body[data-cm-theme] #cm29balafon .cm29bar:after{opacity:.28!important}
+body[data-cm-theme] #cm29 .cm29tongue,body[data-cm-theme] .tonalPads button{background-color:rgba(33,46,40,.24)!important;box-shadow:none!important}
+body[data-cm-theme] .tonalPads button{border-color:rgba(151,188,167,.82)!important}
+body[data-cm-theme] .synthLabCard h3,body[data-cm-theme] .synthLabCard strong{color:#e8e3dd!important}
+
+body[data-cm-theme] .synthLabA,body[data-cm-theme] .synthLabB{background:linear-gradient(145deg,rgba(16,18,21,.84),rgba(31,31,33,.70))!important}
+</style><style id="cm0239EarthRhythmsRepair">
+/* 0239: precise Earth Rhythms visual corrections. Keep note geometry and JS intact. */
+/* The real handpan wrapper is #tonalPanel (not #earthPanel), and its visible note stage is #tonalPads. */
+body[data-cm-theme] #cm29fEarthFamily,
+body[data-cm-theme] #cm29fEarthFamily #tonalPanel,
+body[data-cm-theme] #cm29fEarthFamily #cm29,
+body[data-cm-theme] #cm29fEarthFamily #cm29 .cm29instrument,
+body[data-cm-theme] #cm29fEarthFamily #cm29 .cm29surface,
+body[data-cm-theme] #cm29fEarthFamily #tonalPads,
+body[data-cm-theme] #cm29fEarthFamily #cm29 #cm29tongue,
+body[data-cm-theme] #cm29fEarthFamily #cm29 #cm29balafon {
+ background:rgba(9,12,13,.16)!important;
+ background-image:none!important;
+ border-color:rgba(94,118,108,.48)!important;
+ box-shadow:none!important;
+}
+body[data-cm-theme] #cm29fEarthFamily #tonalPanel > h2,
+body[data-cm-theme] #cm29fEarthFamily #cm29 .cm29instrument > h3{
+ background:rgba(17,22,23,.55)!important;color:#b3d8c5!important;
+}
+/* Retain visible handpan outlines; remove opaque green fill from notes. */
+body[data-cm-theme] #tonalPads button,
+body[data-cm-theme] #tonalPads button.centre{
+ background:rgba(37,62,52,.16)!important;
+ background-image:none!important;
+ border:1.5px solid rgba(116,174,145,.90)!important;
+ box-shadow:inset 0 0 0 1px rgba(15,22,18,.8)!important;
+ color:#e4f7ec!important;
+ opacity:1!important;
+}
+body[data-cm-theme] #tonalPads button:active,
+body[data-cm-theme] #tonalPads button.hit{background:rgba(50,130,85,.40)!important;border-color:#8ce9ae!important}
+/* Actual handpan sequencer toggles are .tonalStep button.on, not .earthSteps. */
+body[data-cm-theme] #tonalSeq .tonalStep button.on,
+body[data-cm-theme] #tonalSeq .tonalStep button[aria-pressed="true"]{
+ background:#26774b!important;border-color:#70f4a0!important;
+ color:#f0fff5!important;box-shadow:inset 0 0 0 1px rgba(142,255,173,.5)!important;
+ font-weight:800!important;
+}
+body[data-cm-theme] #tonalSeq .tonalStep button:not(.on){background:rgba(15,24,21,.7)!important;color:#b9c8c0!important;border-color:#4d6859!important}
+body[data-cm-theme] #tonalSeq .tonalStep button.playing{outline:2px solid #a0f8bd!important;outline-offset:1px!important}
+/* Tank drum tongue surfaces are generated dynamically in #cm29tongue. */
+body[data-cm-theme] #cm29 #cm29tongue button,
+body[data-cm-theme] #cm29 #cm29tongue .cm29pad{
+ background:rgba(65,91,78,.10)!important;background-image:none!important;
+ border-color:rgba(153,188,164,.8)!important;box-shadow:none!important;color:#e3f1e8!important;
+}
+body[data-cm-theme] #cm29 #cm29tongue .cm29geometry{opacity:.10!important}
+body[data-cm-theme] #cm29 #cm29balafon .cm29bar{
+ background:rgba(90,105,94,.10)!important;background-image:none!important;
+ border-color:rgba(159,181,162,.74)!important;box-shadow:none!important;color:#e8eee8!important;
+}
+body[data-cm-theme] #cm29 #cm29balafon .cm29geometry{opacity:.07!important}
+body[data-cm-theme] #cm29 #cm29balafon .cm29bar::before,
+body[data-cm-theme] #cm29 #cm29balafon .cm29bar::after{content:none!important;display:none!important}
+body[data-cm-theme] #cm29 #cm29balafon .cm29bar.hit,
+body[data-cm-theme] #cm29 #cm29tongue button.hit{background:rgba(105,167,126,.38)!important;border-color:#b0f3c5!important}
+/* Articulated Resonance selected steps must be mint green, regardless of generic theme buttons. */
+body[data-cm-theme] #resonanceAddon .resonanceSteps button.on,
+body[data-cm-theme] #resonanceAddon #resVowelPads button.active{
+ background:#356f60!important;border-color:#9debd0!important;
+ color:#f0fff9!important;box-shadow:inset 0 0 0 1px rgba(170,255,220,.30)!important;
+ font-weight:800!important;
+}
+body[data-cm-theme] #resonanceAddon .resonanceSteps button:not(.on){background:rgba(16,25,25,.75)!important;border-color:#536c66!important;color:#c2d6ce!important}
+</style><style id="cm0240-active-step-contrast">
+/* 0240: Low-light active-control contrast — no audio/logic modifications */
+/* Both rhythmic modulators: vivid orange for enabled gates and active steps. */
+#ArhythmGrid .step.on, #BrhythmGrid .step.on {
+  background:linear-gradient(155deg,#e9a451,#c86624) !important;
+  border:1px solid #ffc078 !important;
+  color:#17100b !important;
+  font-weight:800 !important;
+  box-shadow:inset 0 1px 0 #ffe0a066,0 0 9px #e88a3433 !important;
+}
+#ArhythmGrid .step.on::after, #BrhythmGrid .step.on::after {background:#ffe0a0 !important;}
+#ArhythmEnable.active, #BrhythmEnable.active {
+  background:#a94d1d !important;border-color:#f5a65b !important;color:#fff1dc !important;
+}
+/* Sequencer A/B gate buttons use the same orange when enabled. */
+#Asteps .pitchGate.on, #Bsteps .pitchGate.on {
+  background:linear-gradient(155deg,#f0ae61,#c9682a) !important;
+  color:#20130d !important;border-color:#ffd093 !important;font-weight:800 !important;
+}
+#Asteps .pitchStepCell.chosen, #Bsteps .pitchStepCell.chosen {
+  outline:2px solid #f0a253 !important;outline-offset:1px;
+}
+/* Keep the engines individually identifiable using their title hues. */
+#Asteps .pitchChoose {color:#e9c58e !important;}
+#Bsteps .pitchChoose {color:#9cddd4 !important;}
+#Asteps .pitchChoose:hover,#Asteps .pitchChoose:focus-visible {color:#ffe3ad !important;}
+#Bsteps .pitchChoose:hover,#Bsteps .pitchChoose:focus-visible {color:#b6fff1 !important;}
+</style>
+<style id="cm0244SoundDesignCableLayering">
+/* Preserve all cable paths and their visibility outside these two panels.
+   Engine cards are opaque enough to occlude SVG wires while retaining a faint tinted gradient. */
+html body #rack #v16EngineA,
+html body #rack #v16EngineB {
+  position:absolute!important;z-index:4!important;
+  isolation:isolate!important;
+  background-color:#10171a!important;
+  background-image:linear-gradient(125deg,rgba(23,49,43,.92) 0%,rgba(14,22,26,.96) 47%,rgba(51,36,27,.88) 100%)!important;
+  border-color:rgba(135,167,159,.48)!important;
+  box-shadow:inset 0 1px 0 rgba(221,240,233,.055),0 5px 19px rgba(0,0,0,.25)!important;
+}
+/* The modular patch SVG remains below the sound-design panes, never above their text. */
+html body #rack > svg#svg{z-index:1!important;}
+html body #rack #v16EngineA > *,
+html body #rack #v16EngineB > *{position:relative;z-index:1;}
+/* Delicate waveform diagrams: retain form and colour while reducing marker-like weight. */
+html body #rack .cmModeIcon svg path{stroke-width:1.1!important;}
+html body #rack .cmSoundArt svg path{stroke-width:1.25!important;}
+</style>
+
+<style id="cm0250InstrumentStrikeLighting">
+/* The shell lights as a whole when its actual voice is struck; tongues remain visible. */
+@keyframes cm0250TankPulse{0%{background-color:rgba(152,229,174,.34)}30%{background-color:rgba(124,210,154,.24)}100%{background-color:rgba(28,30,29,.12)}}
+html body[data-cm-theme] #cm29 #cm29tongue.cm0250ShellHit{
+ animation:cm0250TankPulse .32s ease-out!important;
+ box-shadow:inset 0 0 44px rgba(137,246,175,.30),0 0 22px rgba(127,232,168,.25)!important;
+ border-color:rgba(169,245,191,.78)!important;
+}
+/* Match the already-established tank note glow on handpan strikes, not idle surfaces. */
+html body[data-cm-theme] #tonalPads button.hit,
+html body[data-cm-theme] #tonalPads button:active,
+html body[data-cm-theme] #cmTripleHandpanRow .tonalPads button.hit,
+html body[data-cm-theme] #cmTripleHandpanRow .tonalPads button:active,
+html body[data-cm-theme] #tonalPads button.playing,
+html body[data-cm-theme] #cmTripleHandpanRow .tonalPads button.playing{
+ background:rgba(142,230,173,.54)!important;
+ border-color:rgba(193,255,210,.96)!important;
+ color:#f5fff5!important;
+ box-shadow:inset 0 0 12px rgba(183,255,205,.25),0 0 17px rgba(121,240,165,.65)!important;
+}
+html body[data-cm-theme] #cm29 #cm29tongue .cm29note.hit,
+html body[data-cm-theme] #cm29 #cm29tongue .cm29note:active{
+ background:rgba(142,230,173,.54)!important;
+ border-color:rgba(193,255,210,.96)!important;
+ box-shadow:inset 0 0 12px rgba(183,255,205,.25),0 0 17px rgba(121,240,165,.65)!important;
+}
+</style>
+<style id="cm0251CentralTankNoteFix">
+/* This override follows earlier theme !important declarations, including the generic tank note fill. */
+html body[data-cm-theme] #cm29 #cm29tongue button.cm29note.centre.cm0251CentreTongue {position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;width:25%!important;height:25%!important;border-radius:50%!important;z-index:5!important;background:#17201c!important;color:#dceee2!important;border:2px solid rgba(163,204,174,.85)!important;box-shadow:inset 0 0 12px rgba(120,180,140,.12)!important;cursor:pointer!important;}
+html body[data-cm-theme] #cm29 #cm29tongue button.cm29note.centre.cm0251CentreTongue.cm0251Lit,
+html body[data-cm-theme] #cm29 #cm29tongue button.cm29note.centre.cm0251CentreTongue:active {background:radial-gradient(circle at 42% 35%,#d5ffe0 0%,#8cf2ad 35%,#2c9562 80%)!important;color:#092a19!important;border-color:#d4ffe1!important;box-shadow:0 0 23px rgba(135,255,171,.85),inset 0 0 14px rgba(232,255,235,.65)!important;}
+</style></head><body class="cm31fStartup" data-cm-theme="midnight"><script id="cm0241BodyThemeSync">(function(){document.body.dataset.cmTheme=document.documentElement.getAttribute('data-cm-boot-theme')||'midnight';document.body.dataset.cmReactive=document.documentElement.getAttribute('data-cm-boot-reactive')||'off'})();</script><style id="cm229AccessStyles">#cm229Access{position:sticky;top:0;z-index:9999;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:9px 12px;background:#101f2bef;border-bottom:1px solid #4a6d84;color:#e6eef4;font:12px system-ui,sans-serif;backdrop-filter:blur(8px)}#cm229Access a{color:#e8f5ff;text-decoration:none;border:1px solid #53788f;background:#29485d;padding:7px 11px;border-radius:6px;font-weight:650}#cm229Access a:focus-visible{outline:2px solid #f3d28e}#cm229Access .cm229note{color:#b9cedc}#cmMixer226,#cmVintage211,#cmVintageLive213{scroll-margin-top:80px}#cmMixer226 .cmMixBanks{position:sticky;top:0;z-index:3;background:#142838;padding:8px 0}#cmVintage211 select[data-p=preset],#cmVintageLive213 select[data-p=preset]{border:2px solid #b58c58}</style><nav id="cm229Access" aria-label="Performance console quick navigation"><strong>CONTINUUM MOSAIC · 0229</strong><a href="#cmMixer226">48-CHANNEL MIXER</a><a href="#cmVintage211">SYNTH VINTAGE · 35 RIGS</a><a href="#cmVintageLive213">LIVE VINTAGE · 35 RIGS</a><span class="cm229note">Mixer: 4 banks × 12 channels · Vintage: open RIG PRESET selector</span></nav><div aria-label="Continuum Mosaic, Continuum Mosaic" class="brandMasthead"><svg aria-label="Intertwined waveforms representing Continuum Mosaic" role="img" viewbox="0 0 280 62" xmlns="http://www.w3.org/2000/svg"><path d="M20 31 C55 -7 86 70 140 31 S225 -7 260 31" fill="none" stroke="#80c6d6" stroke-linecap="round" stroke-width="2.8"></path><path d="M20 31 C55 69 86 -8 140 31 S225 69 260 31" fill="none" opacity=".85" stroke="#d4a86c" stroke-linecap="round" stroke-width="2.8"></path><circle cx="20" cy="31" fill="#e3eaf0" r="3.4"></circle><circle cx="80" cy="43" fill="#e3eaf0" r="3.4"></circle><circle cx="140" cy="31" fill="#e3eaf0" r="3.4"></circle><circle cx="200" cy="19" fill="#e3eaf0" r="3.4"></circle><circle cx="260" cy="31" fill="#e3eaf0" r="3.4"></circle></svg><div class="brandContinuum">CONTINUUM</div><div class="brandMosaic">MOSAIC</div><div class="brandBeta">BETA</div><div class="brandDescriptor">AN INTEGRATED MODULAR SONIC PERFORMANCE ENVIRONMENT</div></div><header><h1 style="font-size:13px;letter-spacing:.07em">SYNTHESIS CONTROL</h1><button id="start">ENABLE AUDIO</button><button id="play">▶ PLAY</button><button id="stop">■ STOP</button><button id="reset">RESET CABLES</button><button id="random">RANDOMISE STEPS</button><button id="save">SAVE PATCH</button><button id="load">LOAD PATCH</button><input accept="application/json" hidden="" id="file" type="file"/><span id="status">Ready</span></header>
 <template id="cm29iHolderA"><div class="cm29iEmbedded" id="cm29iMacroA"><div class="cm29mTitle">SYNTH A · FILTER AUTOMATION</div><div class="macroCard"><strong>SYNTH A · CUTOFF SWEEP</strong><div class="cm29kEditor cm29lEditor" id="cm29lAcut"><div class="cm29lHeading"><strong>CUTOFF · 16-STEP MACRO</strong><label>Enable <input id="cm29lAcuton" type="checkbox"/></label></div><div class="cm29kBars" id="cm29lAcutbars"></div><div class="cm29kEdit"><span id="cm29lAcutstep">STEP 01</span><input aria-label="CUTOFF step value" id="cm29lAcutvalue" max="100" min="0" type="range" value="50"/><output id="cm29lAcutread">50%</output></div><label>Transition <select id="cm29lAcutmode"><option value="hold">Step</option><option value="glide">Glide</option></select></label></div><div class="cm29kEditor cm29lEditor" id="cm29lAq"><div class="cm29lHeading"><strong>RESONANCE · 16-STEP MACRO</strong><label>Enable <input id="cm29lAqon" type="checkbox"/></label></div><div class="cm29kBars" id="cm29lAqbars"></div><div class="cm29kEdit"><span id="cm29lAqstep">STEP 01</span><input aria-label="RESONANCE step value" id="cm29lAqvalue" max="100" min="0" type="range" value="50"/><output id="cm29lAqread">50%</output></div><label>Transition <select id="cm29lAqmode"><option value="hold">Step</option><option value="glide">Glide</option></select></label></div><label><span>Enable automation</span><input id="cm29iAon" type="checkbox"/></label><label>Minimum cutoff <input id="cm29iAmin" max="100" min="0" type="range" value="20"/><output id="cm29iAminVal">20%</output></label><label>Maximum cutoff <input id="cm29iAmax" max="100" min="0" type="range" value="82"/><output id="cm29iAmaxVal">82%</output></label><label>Duration <select id="cm29iAloops"><option value="1">1 loop</option><option value="2">2 loops</option><option selected="" value="4">4 loops</option><option value="8">8 loops</option><option value="16">16 loops</option></select></label><label>Shape <select id="cm29iAshape"><option value="rise">Rise</option><option value="fall">Fall</option><option value="triangle">Triangle</option><option selected="" value="sine">Sine</option></select></label><div class="macroInfo">Current cutoff: <output id="cm29iAread">Manual</output> · Original filter slider remains unchanged</div></div></div></template><template id="cm29iHolderB"><div class="cm29iEmbedded" id="cm29iMacroB"><div class="cm29mTitle">SYNTH B · FILTER AUTOMATION</div><div class="macroCard"><strong>SYNTH B · CUTOFF SWEEP</strong><div class="cm29kEditor cm29lEditor" id="cm29lBcut"><div class="cm29lHeading"><strong>CUTOFF · 16-STEP MACRO</strong><label>Enable <input id="cm29lBcuton" type="checkbox"/></label></div><div class="cm29kBars" id="cm29lBcutbars"></div><div class="cm29kEdit"><span id="cm29lBcutstep">STEP 01</span><input aria-label="CUTOFF step value" id="cm29lBcutvalue" max="100" min="0" type="range" value="50"/><output id="cm29lBcutread">50%</output></div><label>Transition <select id="cm29lBcutmode"><option value="hold">Step</option><option value="glide">Glide</option></select></label></div><div class="cm29kEditor cm29lEditor" id="cm29lBq"><div class="cm29lHeading"><strong>RESONANCE · 16-STEP MACRO</strong><label>Enable <input id="cm29lBqon" type="checkbox"/></label></div><div class="cm29kBars" id="cm29lBqbars"></div><div class="cm29kEdit"><span id="cm29lBqstep">STEP 01</span><input aria-label="RESONANCE step value" id="cm29lBqvalue" max="100" min="0" type="range" value="50"/><output id="cm29lBqread">50%</output></div><label>Transition <select id="cm29lBqmode"><option value="hold">Step</option><option value="glide">Glide</option></select></label></div><label><span>Enable automation</span><input id="cm29iBon" type="checkbox"/></label><label>Minimum cutoff <input id="cm29iBmin" max="100" min="0" type="range" value="20"/><output id="cm29iBminVal">20%</output></label><label>Maximum cutoff <input id="cm29iBmax" max="100" min="0" type="range" value="82"/><output id="cm29iBmaxVal">82%</output></label><label>Duration <select id="cm29iBloops"><option value="1">1 loop</option><option value="2">2 loops</option><option selected="" value="4">4 loops</option><option value="8">8 loops</option><option value="16">16 loops</option></select></label><label>Shape <select id="cm29iBshape"><option value="rise">Rise</option><option value="fall">Fall</option><option value="triangle">Triangle</option><option selected="" value="sine">Sine</option></select></label><div class="macroInfo">Current cutoff: <output id="cm29iBread">Manual</output> · Original filter slider remains unchanged</div></div></div></template><section class="midiHost" data-cm-collapse="yes" data-cm-panel="1" id="midiHost">
 <h2><button aria-expanded="true" aria-label="Toggle EXTERNAL MIDI HOST · LIVE PERFORMANCE" class="cmCollapseButton" title="Collapse EXTERNAL MIDI HOST · LIVE PERFORMANCE" type="button">▾</button>EXTERNAL MIDI HOST · LIVE PERFORMANCE</h2>
 <p class="small">Connect a USB MIDI keyboard, pad controller or MIDI guitar interface. MIDI input is processed locally in your browser. Select a device and assign an independent MIDI channel and mode to each synth engine.</p>
@@ -2650,6 +2818,7 @@ partial(6.08,.012+buzz*.055+timbre*.065,tail*.16,2500+timbre*6500);
 if(res>.005){partial(.502,.045+res*.17,tail*(.20+res*.40),430+res*750);
 partial(1.51,.012+res*.04,tail*.30,900+res*1250)}
 }
+if(kind==='tongue'){const centre=document.querySelector('#cm29tongue .cm0251CentreTongue');if(centre){centre.classList.remove('cm0251Lit');void centre.offsetWidth;centre.classList.add('cm0251Lit');clearTimeout(centre._cm0251Timer);centre._cm0251Timer=setTimeout(()=>centre.classList.remove('cm0251Lit'),350)}} if(kind==='tongue'){const shell=document.getElementById('cm29tongue');if(shell){shell.classList.remove('cm0250ShellHit');void shell.offsetWidth;shell.classList.add('cm0250ShellHit');clearTimeout(shell._cm0250HitTimer);shell._cm0250HitTimer=setTimeout(()=>shell.classList.remove('cm0250ShellHit'),320)}}
 const pad=$(kind==='tongue'?'cm29tongue':'cm29balafon').querySelector('[data-note="'+i+'"][data-cm-octave="'+octaveShift+'"]') || (octaveShift===0 ? $(kind==='tongue'?'cm29tongue':'cm29balafon').querySelector('[data-note="'+i+'"]') : null);if(pad){pad.classList.add('hit');setTimeout(()=>pad.classList.remove('hit'),120)}setTimeout(()=>{try{out.disconnect()}catch(e){}},(decay*(kind==='bal'?(1+pct('cm29balsustain')*2.5):1)*1.3+.3)*1000)}
 function tone(kind,i,velocity=1,gate=1){
  const c=ctx();if(!c)return;
@@ -2678,6 +2847,8 @@ window.cm29SideStrike=async(kind,i,octaveShift)=>{
 };
 function attach(btn,kind,i){btn.dataset.note=i;btn.addEventListener('pointerdown',async e=>{e.preventDefault();if(await ready())tone(kind,i,e.pressure>.1?Math.max(.4,e.pressure):.9)})}
 const tongue=$('cm29tongue');for(let i=0;i<8;i++){let b=document.createElement('button');b.type='button';b.className='cm29note';b.style.setProperty('--rot',i*45+'deg');b.textContent=['D','F','G','A','C','D','F','G'][i];attach(b,'tongue',i);tongue.appendChild(b)}
+/* 0251: central tuned tank-drum note is a genuine playable control, not merely the shell. */
+const centreTongue=document.createElement('button');centreTongue.type='button';centreTongue.className='cm29note centre cm0251CentreTongue';centreTongue.textContent='D';centreTongue.setAttribute('aria-label','Tank drum central tuned note D');attach(centreTongue,'tongue',0);tongue.appendChild(centreTongue);
 const bal=$('cm29balafon');for(let i=0;i<9;i++){let b=document.createElement('button');b.type='button';b.className='cm29bar';b.style.setProperty('--len',92-i*5+'%');b.textContent=i+1;attach(b,'bal',i);bal.appendChild(b)}
 function draw(kind){const v=voices[kind],host=$('cm29'+kind+'steps'),notes=$('cm29'+kind+'notegrid');host.replaceChildren();notes.replaceChildren();for(let i=0;i<16;i++){let b=document.createElement('button');b.type='button';b.className='cm29step'+(v.steps[i]?' on':'')+(v.playing&&v.index===i?' playing':'');b.textContent=i+1;b.title='Toggle step '+(i+1);b.onclick=()=>{v.steps[i]=!v.steps[i];draw(kind)};host.appendChild(b);let sel=document.createElement('select');sel.title='Pitch for step '+(i+1);sel.setAttribute('aria-label',kind+' pitch step '+(i+1));for(let n=0;n<(kind==='tongue'?8:9);n++){let opt=document.createElement('option');opt.value=n;opt.textContent=['D','F','G','A','C','D','F','G','A'][n];sel.appendChild(opt)}sel.value=v.notes[i];sel.onchange=()=>v.notes[i]=Number(sel.value);notes.appendChild(sel)}}
 function schedule(kind){const v=voices[kind];if(!v.playing)return;const len=num('cm29'+kind+'length'),i=v.index%len,div=num('cm29'+kind+'division'),beat=60000/num('cm29tempo'),swing=pct('cm29'+kind+'swing');if(v.steps[i]&&Math.random()*100<num('cm29'+kind+'prob'))tone(kind,v.notes[i],.85,pct('cm29'+kind+'gate'));v.index=(i+1)%len;draw(kind);let interval=beat/div*(i%2?1+swing*.5:1-swing*.5);v.timeout=setTimeout(()=>schedule(kind),Math.max(35,interval))}
@@ -4159,7 +4330,596 @@ window.cmVintageConnect=function(ctx,source){window.__cmVintageContext=ctx;const
 for(const k of ['AMP','LIVE'])createState(k);
 const live=configs.LIVE;const stage=document.getElementById('rack');if(stage&&live){stage.insertAdjacentElement('afterend',live);live.style.position='relative';live.style.zIndex='1';live.style.width='calc(100% - 32px)';live.style.maxWidth='none';live.style.margin='18px 16px 26px'}
 })();</script><style id="cm230WideMixerStyle">@media(min-width:1450px){#cmMixer226 .cmMixGrid{grid-template-columns:repeat(18,minmax(0,1fr))!important}#cmMixer226 .cmMixStrip{min-width:0!important}}@media(min-width:1100px) and (max-width:1449px){#cmMixer226 .cmMixGrid{grid-template-columns:repeat(12,minmax(0,1fr))!important}}</style>
-<script id="cm230ResponsiveBanking">(function(){'use strict';const mixer=document.getElementById('cmMixer226');if(!mixer)return;const strips=[...mixer.querySelectorAll('.cmMixStrip')];const buttons=[...mixer.querySelectorAll('.cmMixBank')];if(strips.length!==48||buttons.length!==4)return;const mq=window.matchMedia('(min-width:1450px)');let active=0;function apply(){const wide=mq.matches;const size=wide?18:12;const total=Math.ceil(48/size);active=Math.min(active,total-1);buttons.forEach((b,i)=>{b.hidden=i>=total;b.style.display=i>=total?'none':'';b.textContent=String(i*size+1).padStart(2,'0')+'–'+String(Math.min(48,(i+1)*size)).padStart(2,'0');b.setAttribute('aria-pressed',String(i===active));b.classList.toggle('active',i===active)});strips.forEach((el,i)=>{el.dataset.bank=String(Math.floor(i/size));el.style.display=Math.floor(i/size)===active?'flex':'none'});const note=document.querySelector('#cm229Access .cm229note');if(note)note.textContent='Mixer: '+total+' banks, up to '+size+' channels · Vintage: open RIG PRESET selector'}buttons.forEach((b,i)=>b.addEventListener('click',()=>{active=i;requestAnimationFrame(apply)}));if(mq.addEventListener)mq.addEventListener('change',()=>{active=0;apply()});else mq.addListener(()=>{active=0;apply()});apply();})();</script></body>
+<script id="cm230ResponsiveBanking">(function(){'use strict';const mixer=document.getElementById('cmMixer226');if(!mixer)return;const strips=[...mixer.querySelectorAll('.cmMixStrip')];const buttons=[...mixer.querySelectorAll('.cmMixBank')];if(strips.length!==48||buttons.length!==4)return;const mq=window.matchMedia('(min-width:1450px)');let active=0;function apply(){const wide=mq.matches;const size=wide?18:12;const total=Math.ceil(48/size);active=Math.min(active,total-1);buttons.forEach((b,i)=>{b.hidden=i>=total;b.style.display=i>=total?'none':'';b.textContent=String(i*size+1).padStart(2,'0')+'–'+String(Math.min(48,(i+1)*size)).padStart(2,'0');b.setAttribute('aria-pressed',String(i===active));b.classList.toggle('active',i===active)});strips.forEach((el,i)=>{el.dataset.bank=String(Math.floor(i/size));el.style.display=Math.floor(i/size)===active?'flex':'none'});const note=document.querySelector('#cm229Access .cm229note');if(note)note.textContent='Mixer: '+total+' banks, up to '+size+' channels · Vintage: open RIG PRESET selector'}buttons.forEach((b,i)=>b.addEventListener('click',()=>{active=i;requestAnimationFrame(apply)}));if(mq.addEventListener)mq.addEventListener('change',()=>{active=0;apply()});else mq.addListener(()=>{active=0;apply()});apply();})();</script><style id="cm0231ThemeEngine">
+/* Independent visual themes; audio routing, instrument controls and original branding untouched. */
+body[data-cm-theme="midnight"]{--bg:#080e1b;--panel:#152438;--edge:#315776;--gold:#b59aff;--teal:#59e8ef;--txt:#e9f5ff;--cm-glow:rgba(89,232,239,.20);--cm-accent:#59e8ef;--cm-ambient:#111a37}
+body[data-cm-theme="nebula"]{--bg:#130f12;--panel:#292025;--edge:#785647;--gold:#ffc17b;--teal:#65d8c6;--txt:#fff1e3;--cm-glow:rgba(255,171,93,.18);--cm-accent:#ffb66a;--cm-ambient:#322027}
+body[data-cm-theme="chromatic"]{--bg:#0c0b19;--panel:#201a38;--edge:#574a84;--gold:#ffca7b;--teal:#78e9e0;--txt:#f5efff;--cm-glow:rgba(190,111,255,.22);--cm-accent:#bf8cff;--cm-ambient:#201333}
+body[data-cm-theme]{background:var(--bg);color:var(--txt);transition:background-color .35s ease,color .35s ease}
+body[data-cm-theme] .module,body[data-cm-theme] .drumPanel,body[data-cm-theme] #cmMixer226{border-color:var(--edge)!important;box-shadow:0 9px 26px #0007,0 0 18px var(--cm-glow)!important}
+body[data-cm-theme] .rack{background:radial-gradient(ellipse at top,var(--cm-ambient),var(--bg) 72%)}
+body[data-cm-theme] button.active{background:color-mix(in srgb,var(--cm-accent) 28%,#13202a)!important}
+body[data-cm-theme] button:hover{border-color:var(--cm-accent)!important}
+body[data-cm-theme] input[type=range]{accent-color:var(--cm-accent)}
+body[data-cm-theme] .meter i{background:var(--cm-accent)}
+#cm0231Themes{position:fixed;right:12px;bottom:12px;z-index:2147480000;display:flex;align-items:center;gap:7px;flex-wrap:wrap;max-width:calc(100vw - 24px);padding:9px 11px;background:#0c1422ee;border:1px solid #58718b;border-radius:12px;box-shadow:0 9px 28px #000a;backdrop-filter:blur(12px);font:12px/1.3 system-ui,sans-serif;color:#eaf3ff}
+#cm0231Themes label{font-weight:700;letter-spacing:.05em}#cm0231Themes select{font-size:12px;padding:6px;background:#1c2c3d;color:white;max-width:175px}
+#cm0231Themes input{accent-color:#7de0ca}#cm0231Themes button{font-size:12px;padding:5px 7px}
+body[data-cm-reactive="on"] #cmMixer226{--cm-live-glow:0.14;box-shadow:0 9px 26px #0007,0 0 calc(12px + 26px * var(--cm-live-glow)) var(--cm-glow)!important}
+body[data-cm-reactive="on"] #cmMixer226 input[type=range]{filter:drop-shadow(0 0 4px var(--cm-accent))}
+body[data-cm-theme="chromatic"] #cmMixer226 [class*="channel"]:nth-child(6n+1){border-top:2px solid #65d7f4}body[data-cm-theme="chromatic"] #cmMixer226 [class*="channel"]:nth-child(6n+2){border-top:2px solid #ad86ff}body[data-cm-theme="chromatic"] #cmMixer226 [class*="channel"]:nth-child(6n+3){border-top:2px solid #ff88b2}body[data-cm-theme="chromatic"] #cmMixer226 [class*="channel"]:nth-child(6n+4){border-top:2px solid #ffcf72}body[data-cm-theme="chromatic"] #cmMixer226 [class*="channel"]:nth-child(6n+5){border-top:2px solid #86e8a3}
+@media(max-width:640px){#cm0231Themes{left:8px;right:8px;bottom:8px;justify-content:center}}
+@media(prefers-reduced-motion:reduce){body[data-cm-theme]{transition:none!important}}
+</style>
+<script id="cm0231ThemeController">(function(){'use strict';
+const themes=['midnight','nebula','chromatic'];
+const root=document.body;
+const ui=document.createElement('div');ui.id='cm0231Themes';ui.setAttribute('role','group');ui.setAttribute('aria-label','Continuum colour themes');
+ui.innerHTML='<label for="cm0231Theme">COLOUR UNIVERSE</label><select id="cm0231Theme" aria-label="Visual theme"><option value="midnight">Midnight Spectrum</option><option value="nebula">Analog Nebula</option><option value="chromatic">Chromatic Continuum</option></select><label><input id="cm0231Reactive" type="checkbox"> Reactive glow</label><button id="cm0231Hide" type="button" aria-label="Minimise theme controls">−</button>';
+root.appendChild(ui);
+let saved={};try{saved=JSON.parse(localStorage.getItem('cm0231Theme')||'{}')}catch(e){}
+const picker=ui.querySelector('#cm0231Theme'),reactive=ui.querySelector('#cm0231Reactive');
+picker.value=themes.includes(saved.theme)?saved.theme:'midnight';reactive.checked=!!saved.reactive;
+function apply(){root.dataset.cmTheme=picker.value;root.dataset.cmReactive=reactive.checked?'on':'off';try{localStorage.setItem('cm0231Theme',JSON.stringify({theme:picker.value,reactive:reactive.checked}))}catch(e){}}
+picker.addEventListener('change',apply);reactive.addEventListener('change',apply);apply();
+const hide=ui.querySelector('#cm0231Hide');let compact=false;hide.addEventListener('click',()=>{compact=!compact;picker.hidden=compact;reactive.parentElement.hidden=compact;hide.textContent=compact?'+':'−';hide.setAttribute('aria-label',compact?'Expand theme controls':'Minimise theme controls')});
+// Visual-only animation: no connection to, or modification of, the audio graph.
+let t=0;const motion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)');function pulse(){if(root.dataset.cmReactive==='on'&&!(motion&&motion.matches)){t+=.035;root.style.setProperty('--cm-live-glow',String(.45+.4*Math.sin(t)))}requestAnimationFrame(pulse)}requestAnimationFrame(pulse);
+})();</script>
+<style id="cm0233HandpanRestore">
+/* 0233 targeted restoration: protect playable note surfaces from the global button skin. */
+body[data-cm-theme] #tonalPads button,
+body[data-cm-theme] #cmTripleHandpanRow .tonalPads button,
+body[data-cm-theme] #cm29 .cm29note {
+  background:linear-gradient(150deg,#5d8e86,#29433f 72%,#172926)!important;
+  border:2px solid #a8e6c8!important;
+  color:#f3fff7!important;
+  box-shadow:inset 0 2px 9px #b8ffde44,0 0 9px #62d4ae33!important;
+  opacity:1!important;visibility:visible!important;
+  font-weight:700!important;
+}
+body[data-cm-theme] #tonalPads button:active,
+body[data-cm-theme] #cmTripleHandpanRow .tonalPads button:active,
+body[data-cm-theme] #cm29 .cm29note:active{
+  background:#67d9ae!important;color:#0c201a!important;box-shadow:0 0 17px #67d9ae99!important;
+}
+body[data-cm-theme] #cm29 #cm29tongue .cm29note{
+  background:linear-gradient(155deg,#88877e,#515c57 72%,#2b3733)!important;
+  border:2px solid #c6c7b4!important;color:#fff6df!important;
+  box-shadow:inset 0 2px 6px #ffffff33,0 0 6px #a9d8c022!important;
+}
+body[data-cm-theme] .tonalPanel,
+body[data-cm-theme] #cmTripleHandpanRow,
+body[data-cm-theme] #cm29 .cm29instrument{
+  background:rgba(19,26,25,.68)!important;
+  border-color:rgba(108,172,155,.55)!important;
+}
+body[data-cm-theme] #cm29 .cm29surface{background:rgba(12,19,18,.35)!important}
+</style>
+<style id="cm0235LowLightPrototype">
+/* 0235: restrained surfaces; high-legibility interactive elements. No audio code changed. */
+body[data-cm-theme]{--cm-panel:rgba(19,20,21,.42);--cm-raised:rgba(27,28,29,.53);--cm-border:#686765;--cm-accent:#b5bbb6}
+body[data-cm-theme="nebula"]{--cm-panel:rgba(26,23,23,.43);--cm-raised:rgba(35,30,28,.53);--cm-border:#77706a;--cm-accent:#c5b5a7}
+body[data-cm-theme="chromatic"]{--cm-panel:rgba(24,22,26,.42);--cm-raised:rgba(31,29,33,.53);--cm-border:#726d79;--cm-accent:#b7aeba}
+/* Target actual instrument shells rather than applying opacity to their children. */
+body[data-cm-theme] #cm29fEarthFamily,
+body[data-cm-theme] #cm29,
+body[data-cm-theme] #cm29 .cm29instrument,
+body[data-cm-theme] #cm29 .cm29surface,
+body[data-cm-theme] .tonalPanel,
+body[data-cm-theme] #cmTripleHandpanRow,
+body[data-cm-theme] #dronePanel,
+body[data-cm-theme] .dronePanel,
+body[data-cm-theme] #resonanceAddon,
+body[data-cm-theme] .didgLab,
+body[data-cm-theme] #earthPerformancePads,
+body[data-cm-theme] #continuumPerformanceMatrix{
+ background:linear-gradient(145deg,rgba(48,50,48,.23),rgba(13,15,16,.36))!important;
+ border-color:rgba(157,155,145,.52)!important;
+ box-shadow:inset 0 1px rgba(225,220,205,.035)!important;
+}
+body[data-cm-theme] #cm29 #cm29tongue,
+body[data-cm-theme] #cm29 #cm29balafon,
+body[data-cm-theme] #cm29 .cm29round,
+body[data-cm-theme] #cm29 .cm29balafon{
+ background:rgba(28,30,29,.12)!important;
+ box-shadow:none!important;
+ border-color:rgba(172,165,151,.37)!important;
+}
+/* Tongue notes: consistent, almost line-drawn with visible tactile borders. */
+body[data-cm-theme] #cm29 #cm29tongue .cm29note{
+ background:linear-gradient(145deg,rgba(185,179,162,.14),rgba(87,88,82,.075))!important;
+ border:1.6px solid rgba(207,197,170,.83)!important;
+ outline:1px solid rgba(201,194,176,.22)!important;
+ color:#e5dfd2!important;
+ box-shadow:inset 0 1px 2px rgba(235,225,206,.07),0 0 3px rgba(207,190,162,.13)!important;
+ opacity:1!important;visibility:visible!important;
+}
+body[data-cm-theme] #cm29 #cm29tongue .cm29note.hit,
+body[data-cm-theme] #cm29 #cm29tongue .cm29note:active{
+ background:rgba(194,146,99,.40)!important;border-color:#edbc86!important;
+ box-shadow:0 0 10px rgba(222,151,89,.36)!important;
+}
+body[data-cm-theme] #cm29 #cm29tongue .cm29geometry{opacity:.23!important}
+/* Balafon bars remain distinct and playable but not heavy blocks. */
+body[data-cm-theme] #cm29 #cm29balafon .cm29bar{
+ background:linear-gradient(170deg,rgba(185,154,119,.23),rgba(82,68,58,.15))!important;
+ border:1.5px solid rgba(200,168,128,.76)!important;
+ color:#e5d7c7!important;
+ box-shadow:inset 0 1px rgba(250,220,180,.10)!important;
+ opacity:1!important;
+}
+body[data-cm-theme] #cm29 #cm29balafon .cm29bar:before{background:rgba(91,76,61,.14)!important;box-shadow:none!important;border-color:rgba(151,127,101,.30)!important}
+body[data-cm-theme] #cm29 #cm29balafon .cm29bar:after{background:rgba(171,142,112,.32)!important;box-shadow:none!important}
+body[data-cm-theme] #cm29 #cm29balafon .cm29bar.hit,
+body[data-cm-theme] #cm29 #cm29balafon .cm29bar:active{background:rgba(200,147,92,.48)!important;border-color:#f1b77b!important}
+body[data-cm-theme] #cm29 #cm29balafon .cm29geometry{opacity:.10!important}
+/* Handpan: border brighter than translucent note fill; keep buttons interactive. */
+body[data-cm-theme] #tonalPads button,
+body[data-cm-theme] #cmTripleHandpanRow .tonalPads button,
+body[data-cm-theme] #cm29 .cm29instrument:not(:has(#cm29tongue,#cm29balafon)) .cm29note{
+ background:linear-gradient(150deg,rgba(160,166,155,.24),rgba(62,75,69,.17))!important;
+ border:2px solid rgba(184,209,189,.94)!important;
+ color:#f0f1e9!important;
+ box-shadow:inset 0 1px rgba(232,244,225,.13),0 0 5px rgba(153,190,166,.22)!important;
+ opacity:1!important;visibility:visible!important;
+}
+body[data-cm-theme] #tonalPads button:active,
+body[data-cm-theme] #cmTripleHandpanRow .tonalPads button:active{background:rgba(135,190,164,.52)!important;box-shadow:0 0 11px rgba(140,205,172,.48)!important}
+/* Softly illuminated outlines, quieter panels. */
+body[data-cm-theme] .module,
+body[data-cm-theme] [class*="Panel"],
+body[data-cm-theme] [class*="panel"]:not(.performancePad){border-color:rgba(151,152,147,.54)!important}
+body[data-cm-theme] .module h2,
+body[data-cm-theme] .module .inside,
+body[data-cm-theme] [class*="Panel"] h2{background:rgba(21,22,23,.35)!important}
+/* Gate and FX sections: graphite fills, controls retain coloured accents. */
+body[data-cm-theme] [class*="gate" i]:not(input):not(button),
+body[data-cm-theme] [class*="resonance" i]:not(input):not(button),
+body[data-cm-theme] [class*="soundDesign" i]:not(input):not(button),
+body[data-cm-theme] [class*="masterFx" i]:not(input):not(button){
+ background-color:rgba(28,29,28,.29)!important;border-color:rgba(155,151,139,.57)!important;
+}
+body[data-cm-theme] #continuumPerformanceMatrix .performancePad,
+body[data-cm-theme] #earthPerformancePads .performancePad{opacity:1!important}
+/* Patch bay gradient, without touching cable SVG or ports. */
+body[data-cm-theme] #cmPatchBay{background:linear-gradient(140deg,rgba(37,38,38,.77),rgba(18,19,21,.82) 60%,rgba(43,35,32,.56))!important;border-color:#77736e!important}
+/* Mixer: warmer housing, restrained brick outlines, vivid orange-red fader controls. */
+body[data-cm-theme] #cmMixer226{background:linear-gradient(155deg,rgba(40,30,30,.70),rgba(15,16,18,.82) 60%,rgba(35,26,26,.72))!important;border-color:#825d55!important}
+body[data-cm-theme] #cmMixer226 .cmMixBanks{background:rgba(27,23,24,.92)!important}
+body[data-cm-theme] #cmMixer226 .cmMixStrip{background:rgba(31,26,27,.55)!important;border-color:rgba(154,87,75,.69)!important}
+body[data-cm-theme] #cmMixer226 input[type="range"]{accent-color:#d97952!important}
+body[data-cm-theme] #cmMixer226 .cmMixVolume,
+body[data-cm-theme] #cmMixer226 .cmMixFxWet,
+body[data-cm-theme] #cmMixer226 .cmMixPan{accent-color:var(--cm235-heat,#d97b53)!important}
+/* Dark vintage walnut-bronze gradients, no bright or muddy brown blocks. */
+body[data-cm-theme] #cmVintage211,
+body[data-cm-theme] #cmVintageLive213{background:linear-gradient(135deg,rgba(66,47,36,.54),rgba(25,23,24,.80) 46%,rgba(45,36,30,.55))!important;border-color:rgba(165,124,87,.65)!important}
+body[data-cm-theme] #cmVintage211 .cvhead,
+body[data-cm-theme] #cmVintageLive213 .cvhead{background:rgba(35,29,27,.38)!important}
+/* Preserve recognisable keyboard, existing live keyboard gradient and Rhythm Designer. */
+</style>
+<script id="cm0235MixerHeat">/* Presentation only. Update the fader's accent from its current position. */
+(function(){function paint(e){var x=e.target;if(!x||!x.matches||!x.matches('#cmMixer226 .cmMixVolume,#cmMixer226 .cmMixFxWet,#cmMixer226 .cmMixPan'))return;
+var min=Number(x.min||0),max=Number(x.max||100),v=Number(x.value||0);var t=Math.max(0,Math.min(1,(v-min)/(max-min||1)));
+var hue=205-190*t;var sat=48+23*t;var light=60-7*t;x.style.setProperty('--cm235-heat','hsl('+hue+' '+sat+'% '+light+'%)');}
+document.addEventListener('input',paint,{passive:true});function init(){document.querySelectorAll('#cmMixer226 .cmMixVolume,#cmMixer226 .cmMixFxWet,#cmMixer226 .cmMixPan').forEach(function(x){paint({target:x})})}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();})();
+</script>
+
+<style id="cm0236GradientStudy">
+/* 0236: visual-only, preserve underlying controls and patch connections. */
+/* Filter automation and randomised cutoff, A/B: transparent sage to soft amber. */
+body[data-cm-theme] #cm29iMacroA,body[data-cm-theme] #cm29iMacroB,
+body[data-cm-theme] #cmRandomFilterA,body[data-cm-theme] #cmRandomFilterB {
+ background:linear-gradient(135deg,rgba(72,110,85,.24) 0%,rgba(33,44,39,.23) 44%,rgba(159,104,59,.18) 100%)!important;
+ border:1px solid rgba(147,160,126,.65)!important;box-shadow:inset 0 1px rgba(219,224,197,.05)!important;
+}
+body[data-cm-theme] #cm29iMacroA .macroCard,body[data-cm-theme] #cm29iMacroB .macroCard,
+body[data-cm-theme] #cm29iMacroA .cm29lEditor,body[data-cm-theme] #cm29iMacroB .cm29lEditor {
+ background:linear-gradient(115deg,rgba(65,110,85,.17),rgba(96,91,65,.13) 53%,rgba(176,111,63,.16))!important;
+ border-color:rgba(155,151,119,.50)!important;
+}
+/* Synthesis engine FM / phase distortion: subdued layered gradient. */
+body[data-cm-theme] #v16Synthesis{
+ background:linear-gradient(135deg,rgba(35,53,51,.58),rgba(24,27,31,.53) 48%,rgba(92,69,59,.35))!important;
+ border-color:rgba(137,148,139,.64)!important;
+}
+body[data-cm-theme] #v16Synthesis .v16Card{
+ background:linear-gradient(140deg,rgba(68,105,96,.20),rgba(26,31,36,.30) 55%,rgba(155,112,79,.15))!important;
+ border-color:rgba(141,151,145,.57)!important;
+}
+/* Keep text and active inputs fully legible; transparency belongs to surfaces only. */
+body[data-cm-theme] #v16Synthesis input,body[data-cm-theme] #v16Synthesis select,
+body[data-cm-theme] #cm29iMacroA input,body[data-cm-theme] #cm29iMacroB input,
+body[data-cm-theme] #cmRandomFilterA input,body[data-cm-theme] #cmRandomFilterB input{opacity:1!important}
+</style>
+<style id="cm0237LowLightSurfaceRefinement">
+/* 0237 Low-light refinement: surfaces quiet, playing controls readable. No DSP changes. */
+body[data-cm-theme] .drumEcho{
+ background:linear-gradient(135deg,rgba(38,44,42,.40),rgba(22,26,27,.34) 53%,rgba(97,68,48,.24))!important;
+ border-color:rgba(161,144,119,.62)!important;
+}
+body[data-cm-theme] .drumEcho input[type="range"]{accent-color:#d79b65!important;opacity:1!important}
+body[data-cm-theme] .drumEcho label{color:#ece4d6!important}
+/* A/B cutoff editors sit above the patch wires; do not flatten the cable layer across oscillators. */
+body[data-cm-theme] #cm29iMacroA,body[data-cm-theme] #cm29iMacroB{
+ position:relative!important;z-index:12!important;
+ background:linear-gradient(135deg,rgba(33,47,39,.90),rgba(28,32,30,.91) 53%,rgba(65,49,36,.88))!important;
+ isolation:isolate;
+}
+body[data-cm-theme] #cm29iMacroA .macroCard,body[data-cm-theme] #cm29iMacroB .macroCard{
+ background:linear-gradient(130deg,rgba(53,76,60,.80),rgba(42,43,37,.80) 55%,rgba(95,68,47,.77))!important;
+}
+/* Button bodies recede while their labels and active borders remain legible. */
+body[data-cm-theme] .drumEcho button,body[data-cm-theme] #tonalPanel .tonalControls button,
+body[data-cm-theme] #earthPanel .earthToolbar button{
+ background:linear-gradient(140deg,rgba(54,62,58,.49),rgba(23,28,28,.56))!important;
+ color:#e9eee8!important;border-color:rgba(172,192,177,.70)!important;
+ text-shadow:0 1px 1px rgba(0,0,0,.7)!important;
+}
+body[data-cm-theme] .drumEcho button.active,body[data-cm-theme] #tonalPanel .tonalControls button.active,
+body[data-cm-theme] #earthPanel .earthToolbar button.active{border-color:#a5d9c1!important;color:#f4fff6!important}
+/* Earth Rhythms shell and handpan: subdued green-grey, outlines carry the definition. */
+body[data-cm-theme] #earthPanel,body[data-cm-theme] #tonalPanel,
+body[data-cm-theme] #cmTripleHandpanRow,body[data-cm-theme] #cm29fEarthFamily{
+ background:linear-gradient(145deg,rgba(31,44,38,.27),rgba(14,18,19,.29) 65%,rgba(30,35,31,.22))!important;
+ border-color:rgba(129,161,142,.65)!important;
+}
+body[data-cm-theme] #tonalPads,body[data-cm-theme] #cmTripleHandpanRow .tonalPads,
+body[data-cm-theme] #cm29 .cm29surface{
+ background:rgba(17,22,22,.16)!important;
+ box-shadow:none!important;
+}
+body[data-cm-theme] #tonalPads button,body[data-cm-theme] #cmTripleHandpanRow .tonalPads button{
+ background:linear-gradient(140deg,rgba(102,125,113,.17),rgba(28,38,38,.14))!important;
+ border-color:rgba(165,205,187,.90)!important;
+ box-shadow:inset 0 1px rgba(235,255,242,.08),0 0 3px rgba(151,191,169,.15)!important;
+ color:#eef5ef!important;
+}
+/* Tank drum and balafon: no heavy solid colour or carved relief. */
+body[data-cm-theme] #cm29 .cm29instrument,
+body[data-cm-theme] #cm29 #cm29tongue,body[data-cm-theme] #cm29 #cm29balafon{
+ background:rgba(18,22,22,.14)!important;box-shadow:none!important;
+ border-color:rgba(138,156,147,.52)!important;
+}
+body[data-cm-theme] #cm29 #cm29tongue .cm29note{
+ background:linear-gradient(135deg,rgba(134,163,151,.11),rgba(40,53,51,.07))!important;
+ border-color:rgba(180,207,193,.78)!important;box-shadow:none!important;
+}
+body[data-cm-theme] #cm29 #cm29balafon .cm29bar{
+ background:linear-gradient(170deg,rgba(135,147,137,.14),rgba(55,62,60,.10))!important;
+ border-color:rgba(178,194,179,.67)!important;box-shadow:none!important;
+ color:#e5e9e0!important;
+}
+body[data-cm-theme] #cm29 #cm29balafon .cm29bar::before,
+body[data-cm-theme] #cm29 #cm29balafon .cm29bar::after{
+ background:rgba(90,101,95,.10)!important;box-shadow:none!important;
+}
+body[data-cm-theme] #cm29 #cm29balafon .cm29geometry{opacity:.045!important}
+/* Keep live controls crisp even when their panel surfaces are nearly transparent. */
+body[data-cm-theme] #earthPanel input[type="range"],body[data-cm-theme] #tonalPanel input[type="range"]{
+ accent-color:#9dc8b0!important;opacity:1!important;
+}
+</style>
+<style id="cm0241LowLightPerformanceRefinement">
+/* 0241: low-light performance surfaces; cosmetic rules only. */
+html[data-cm-boot-theme="midnight"]{background:#080c11;color:#e5eeeb}
+html[data-cm-boot-theme="nebula"]{background:#130f12;color:#fff1e3}
+html[data-cm-boot-theme="chromatic"]{background:#0c0b19;color:#f5efff}
+/* Earth Rhythms: housing is outline only, with no coloured panel fill. */
+body[data-cm-theme] #cm29fEarthFamily #tonalPads,
+body[data-cm-theme] #cm29fEarthFamily .cm29instruments,
+body[data-cm-theme] #cm29fEarthFamily #cm29 .cm29surface{
+ background:transparent!important;background-image:none!important;
+ border-color:rgba(126,160,140,.56)!important;box-shadow:none!important;
+}
+body[data-cm-theme] #cm29fEarthFamily #tonalPanel{background:rgba(7,10,11,.12)!important}
+/* All tank tongues and balafon bars share almost transparent material. */
+body[data-cm-theme] #cm29tongue .cm29pad,
+body[data-cm-theme] #cm29tongue button,
+body[data-cm-theme] #cm29balafon .cm29bar{
+ background:rgba(125,147,130,.055)!important;background-image:none!important;
+ border-color:rgba(162,190,169,.76)!important;box-shadow:none!important;
+}
+body[data-cm-theme] #cm29balafon .cm29bar::before,
+body[data-cm-theme] #cm29balafon .cm29bar::after{opacity:.07!important;filter:grayscale(1)!important}
+body[data-cm-theme] #cm29tongue .cm29pad:active,
+body[data-cm-theme] #cm29balafon .cm29bar:active{background:rgba(91,191,139,.28)!important;border-color:#8ef4b1!important}
+/* Visible mint-green indication on selected resonant and articulated notes. */
+body[data-cm-theme] #dronePanel button.active,
+body[data-cm-theme] #dronePanel button.on,
+body[data-cm-theme] #dronePanel button[aria-pressed="true"],
+body[data-cm-theme] #tonalPanel button.active,
+body[data-cm-theme] #tonalPanel button.on,
+body[data-cm-theme] #tonalPanel button[aria-pressed="true"]{
+ background:rgba(33,130,82,.80)!important;border-color:#81ffb4!important;color:#f4fff8!important;
+ box-shadow:inset 0 0 0 1px rgba(175,255,206,.65),0 0 9px rgba(83,244,143,.24)!important;
+}
+/* Both vintage rack enclosures: no medium-grey panel wash. */
+body[data-cm-theme] #cmVintageLive213,
+body[data-cm-theme] #cmVintageSynth213,
+body[data-cm-theme] .cmVintage213{
+ background:linear-gradient(145deg,rgba(8,10,12,.97),rgba(15,16,18,.94))!important;
+ border-color:rgba(124,113,103,.62)!important;color:#eaece9!important;
+}
+body[data-cm-theme] .cmVintage213 label,
+body[data-cm-theme] .cmVintage213 p{color:#e0e2df!important}
+/* Command hub and its launch deck, when present. */
+body[data-cm-theme] #cmHub,
+body[data-cm-theme] #cmHub #cm31eLaunchDeck{
+ background:linear-gradient(145deg,rgba(18,17,18,.87),rgba(13,14,16,.76) 70%,rgba(41,27,20,.22))!important;
+ border-color:rgba(134,112,96,.60)!important;box-shadow:none!important;
+}
+body[data-cm-theme] #cmHub button.active,
+body[data-cm-theme] #cmHub button[aria-pressed="true"],
+body[data-cm-theme] #cmHub .active button,
+body[data-cm-theme] #cm31eLaunchDeck button.active{
+ border:2px solid #ffa24d!important;outline:1px solid #f5a14d!important;
+ box-shadow:0 0 12px rgba(255,139,51,.32)!important;color:#fff4e6!important;
+ background:rgba(110,54,22,.30)!important;
+}
+/* Keyboard settings and expressive control housings. */
+body[data-cm-theme] #performanceKeyboard .keyboardSettings,
+body[data-cm-theme] #performanceKeyboard .keyboardTargets,
+body[data-cm-theme] #cmKeyboardLiveFX,
+body[data-cm-theme] .cmExpressivePanel,
+body[data-cm-theme] .cmExpressionPanel{
+ background:linear-gradient(135deg,rgba(13,16,18,.86),rgba(26,23,22,.67))!important;
+ border-color:rgba(124,120,111,.58)!important;color:#e9efec!important;
+}
+/* Live input gate and experimental tape echo: subdued containers, vivid active keys. */
+body[data-cm-theme] #liveGatePanel,
+body[data-cm-theme] #tapeEchoLab{
+ background:linear-gradient(145deg,rgba(10,13,16,.94),rgba(24,21,20,.76))!important;
+ border-color:rgba(127,117,107,.60)!important;color:#e8eeec!important;
+}
+body[data-cm-theme] #liveGatePanel button,
+body[data-cm-theme] #tapeEchoLab button{
+ background:rgba(31,33,34,.72)!important;border-color:rgba(148,142,130,.70)!important;
+ color:#f0f3f0!important;
+}
+body[data-cm-theme] #liveGateSteps button.active,
+body[data-cm-theme] #liveGateSteps button.on,
+body[data-cm-theme] #liveGateSteps button[aria-pressed="true"],
+body[data-cm-theme] #liveGatePanel button.active,
+body[data-cm-theme] #tapeEchoLab button.active{
+ background:rgba(188,80,23,.85)!important;border:2px solid #ffae57!important;
+ color:#fff8ed!important;box-shadow:0 0 11px rgba(255,138,43,.30)!important;
+}
+body[data-cm-theme] #liveGateSteps button:not(.active):not(.on):not([aria-pressed="true"]){
+ background:rgba(27,28,30,.75)!important;border-color:rgba(135,125,115,.70)!important;
+}
+</style>
+<style id="cm0242TargetedTransparency">
+/* 0242: instrument materials only. Do not dim parents, labels or hit targets. */
+/* Balafon: remove the formerly opaque teal body AND every tan/wood key fill. */
+html body[data-cm-theme] #cm29fEarthFamily #cm29 #cm29balafon {
+ background:rgba(8,12,12,.045)!important;background-image:none!important;
+ box-shadow:none!important;border-color:rgba(145,171,158,.48)!important;
+}
+html body[data-cm-theme] #cm29fEarthFamily #cm29 #cm29balafon .cm29bar {
+ background:rgba(132,161,146,.035)!important;background-image:none!important;
+ border:1px solid rgba(169,198,178,.72)!important;
+ box-shadow:none!important;filter:none!important;opacity:1!important;
+}
+html body[data-cm-theme] #cm29fEarthFamily #cm29 #cm29balafon .cm29bar::before,
+html body[data-cm-theme] #cm29fEarthFamily #cm29 #cm29balafon .cm29bar::after {content:none!important;display:none!important}
+html body[data-cm-theme] #cm29fEarthFamily #cm29 #cm29balafon .cm29bar.hit,
+html body[data-cm-theme] #cm29fEarthFamily #cm29 #cm29balafon .cm29bar:active {background:rgba(115,221,164,.27)!important;border-color:#a2ffd0!important;box-shadow:0 0 11px rgba(115,221,164,.28)!important}
+/* Tank drum: all octaves use the same almost transparent note material. */
+html body[data-cm-theme] #cm29fEarthFamily #cm29 .cmV10Triplet .cm29note,
+html body[data-cm-theme] #cm29fEarthFamily #cm29 #cm29tongue .cm29note,
+html body[data-cm-theme] #cm29fEarthFamily #cm29 .cm29round .cm29note {
+ background:rgba(130,165,147,.045)!important;background-image:none!important;
+ border-color:rgba(175,202,185,.72)!important;
+ box-shadow:none!important;opacity:1!important;color:#e4f1e9!important;
+}
+html body[data-cm-theme] #cm29fEarthFamily #cm29 .cmV10Triplet .cm29note:active,
+html body[data-cm-theme] #cm29fEarthFamily #cm29 .cmV10Triplet .cm29note.hit {background:rgba(102,207,152,.27)!important;border-color:#a0ffcb!important}
+/* The long handpan row is an outline, not a tinted rectangle. */
+html body[data-cm-theme] #cm29fEarthFamily #cmTripleHandpanRow,
+html body[data-cm-theme] #cm29fEarthFamily .cmTripleHandpanRow {
+ background:transparent!important;background-image:none!important;
+ box-shadow:none!important;border:1px solid rgba(136,170,151,.52)!important;
+}
+/* Synth A/B sound-design housings: black translucent, keep sliders readable. */
+html body[data-cm-theme] #rack #v16EngineA,
+html body[data-cm-theme] #rack #v16EngineB {
+ background:rgba(7,10,12,.54)!important;background-image:none!important;
+ border-color:rgba(124,145,139,.36)!important;
+ box-shadow:inset 0 1px 0 rgba(225,242,235,.025)!important;
+}
+</style>
+
+<style id="cm0246DefinitiveSoundDesignOcclusion">
+/* 0246: patch wiring is rendered behind BOTH opaque-gradient sound design cards.
+   An opaque base is essential: translucent backgrounds alone reveal cables. */
+html body #rack { isolation:isolate; }
+html body #rack > svg#svg {
+ position:absolute!important;
+ z-index:1!important;
+ pointer-events:none!important;
+}
+html body #rack > #v16EngineA.cmEngineInline,
+html body #rack > #v16EngineB.cmEngineInline {
+ position:absolute!important;
+ z-index:40!important;
+ isolation:isolate!important;
+ opacity:1!important;
+ background-color:#202826!important;
+ background-image:linear-gradient(120deg,#26352f 0%,#1b2729 48%,#332b23 100%)!important;
+ background-blend-mode:normal!important;
+ box-shadow:0 9px 24px rgba(0,0,0,.42)!important;
+}
+html body #rack > #v16EngineA.cmEngineInline::before,
+html body #rack > #v16EngineB.cmEngineInline::before {
+ content:none!important;
+}
+html body #rack > #v16EngineA.cmEngineInline > *,
+html body #rack > #v16EngineB.cmEngineInline > * {
+ position:relative;
+ z-index:1;
+}
+</style>
+
+<style id="cm0247DarkSoundDesignAndFilterHousings">
+/* 0247: opaque near-black tinted sound-design cards, cables remain behind them. */
+html body #rack > #v16EngineA.cmEngineInline,
+html body #rack > #v16EngineB.cmEngineInline {
+ background-color:#0b0e0e!important;
+ background-image:linear-gradient(125deg,#101716 0%,#0b1011 43%,#17140f 78%,#0a0d0e 100%)!important;
+ background-blend-mode:normal!important;
+ opacity:1!important;z-index:40!important;isolation:isolate!important;
+}
+html body #rack > svg#svg {z-index:1!important;pointer-events:none!important;}
+/* Darken ONLY exposed surrounding housing, not inner macro editors or sliders. */
+html body[data-cm-theme] #cm29iMacroA,
+html body[data-cm-theme] #cm29iMacroB {
+ background:linear-gradient(135deg,rgba(12,17,16,.97),rgba(13,15,15,.97) 58%,rgba(22,18,15,.96))!important;
+ background-color:#0e1110!important;
+}
+html body[data-cm-theme] #cm29iMacroA > .macroCard,
+html body[data-cm-theme] #cm29iMacroB > .macroCard {
+ background:linear-gradient(135deg,rgba(15,20,19,.97),rgba(18,19,18,.96) 62%,rgba(25,21,18,.95))!important;
+ background-color:#121514!important;
+}
+html body[data-cm-theme] #cmRandomFilterA,
+html body[data-cm-theme] #cmRandomFilterB {
+ background:linear-gradient(135deg,rgba(13,19,19,.96),rgba(14,17,18,.96) 55%,rgba(21,20,17,.94))!important;
+ background-color:#101414!important;
+}
+/* Keep the cutoff/resonance editor cards, controls and active states unchanged. */
+</style>
+
+<style id="cm0249PerformanceSurfaceRefinement">
+/* 0249: reduce the visual weight of the command hub and its looper bank. */
+html body #cmHub {
+ background:linear-gradient(145deg,#0b0e10 0%,#101313 52%,#0b0d0f 100%)!important;
+ border-color:rgba(125,150,145,.30)!important;
+ box-shadow:0 10px 28px rgba(0,0,0,.32)!important;
+}
+html body #cmHub .hubConnection,
+html body #cmHub .hubToolbar,
+html body #cmHub .hubConfig,
+html body #cmHub .hubGrid {
+ background-color:rgba(11,14,16,.30)!important;
+}
+html body #cmHub .hubPad {
+ background:linear-gradient(145deg,#151b1d,#0c1012)!important;
+ border-color:rgba(124,154,156,.45)!important;
+ color:#e6eeee!important;
+}
+html body #cmHub .hubPad.on {
+ background:linear-gradient(145deg,#203e37,#11241f)!important;
+ border-color:rgba(129,226,191,.78)!important;
+ box-shadow:inset 0 0 0 1px rgba(137,231,190,.15),0 0 12px rgba(79,184,142,.18)!important;
+}
+/* The LOOPER bank inherits the same dark, unobtrusive pad treatment. */
+/* Continuum Live Performance Launchpad: near-colourless idle buttons,
+   while preserving legibility and a distinguishable active/queued state. */
+html body #cm31eLaunchGrid > .cm31ePad,
+html body #cmUnifiedPadDeck #cm31eLaunchGrid > .cm31ePad,
+html body #cmHub #cm31eLaunchGrid > .cm31ePad {
+ background:rgba(14,18,20,.20)!important;
+ background-color:rgba(14,18,20,.20)!important;
+ border-color:rgba(161,183,183,.28)!important;
+ border-bottom-color:rgba(161,183,183,.36)!important;
+ border-left-color:rgba(161,183,183,.36)!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.025)!important;
+ color:#e0e9e9!important;
+}
+html body #cm31eLaunchGrid > .cm31ePad.cm31eOn,
+html body #cmUnifiedPadDeck #cm31eLaunchGrid > .cm31ePad.cm31eOn,
+html body #cmHub #cm31eLaunchGrid > .cm31ePad.cm31eOn,
+html body #cm31eLaunchGrid > .cm31ePad[aria-pressed="true"] {
+ background:rgba(63,116,99,.20)!important;
+ border-color:rgba(140,218,189,.65)!important;
+ box-shadow:0 0 11px rgba(88,182,151,.16),inset 0 0 0 1px rgba(158,230,198,.08)!important;
+}
+</style>
+
+<style id="cm0252WarmPerformanceRefinement">
+/* 0252: near-black architecture, barely perceptible warm undertones.
+   Do not touch routing, MIDI handling, note triggers or pad active states. */
+html body #midiHost.midiHost{
+ background:linear-gradient(145deg,#100c0e 0%,#090809 58%,#120b0e 100%)!important;
+ border-color:rgba(197,113,91,.24)!important;
+}
+html body #midiHost .midiCard,
+html body #midiHost .midiRows > div,
+html body #midiHost .midiLooper,
+html body #midiHost #cmV17Universal{
+ background:linear-gradient(135deg,#120c0e,#090809 80%)!important;
+ border-color:rgba(197,119,93,.22)!important;
+}
+html body #midiHost h2,html body #midiHost h3{color:#e4b29c!important}
+html body #cmUnifiedPadDeck{
+ background:linear-gradient(135deg,#140e11 0%,#090809 58%,#100b0d 100%)!important;
+ border-color:rgba(200,137,115,.24)!important;
+}
+html body #cmUnifiedPadDeck .cmUnifiedSubpanel,
+html body #cmUnifiedPadDeck #cmRhythmDesignerUnified,
+html body #cmUnifiedPadDeck .cm31eFloating,
+html body #cmUnifiedPadDeck .performancePadBank,
+html body #cmUnifiedPadDeck .matrixPanel{
+ background:linear-gradient(140deg,#150f11,#0a090a 80%)!important;
+ border-color:rgba(203,142,116,.20)!important;
+}
+html body #cmUnifiedPadDeck .cmUnifiedHeading{border-bottom-color:rgba(210,146,117,.22)!important}
+html body #cmUnifiedPadDeck .cmUnifiedHeading span{color:#c9b6a9!important}
+html body #performanceKeyboard.performanceKeyboard{
+ background:linear-gradient(135deg,#100c0e,#080809 62%,#130d10)!important;
+ border-color:rgba(207,137,112,.24)!important;
+}
+html body #performanceKeyboard.performanceKeyboard > h2{color:#e8b59d!important}
+html body #performanceKeyboard .cmExpressive{
+ background:linear-gradient(135deg,#100c0e,#0a090a 70%,#120d10)!important;
+ border-color:rgba(205,133,108,.18)!important;
+ color:#eaded5!important;
+}
+html body #performanceKeyboard .cmExpressive > h3{color:#e9b69c!important}
+html body #performanceKeyboard .cmExpressGrid label{color:#d7bcae!important}
+/* Subtle inner housings, without reducing the visibility of controls. */
+html body #performanceKeyboard .cmExpressGrid > label{
+ background:rgba(18,12,14,.55)!important;
+ border-color:rgba(202,136,113,.12)!important;
+}
+</style>
+<style id="cm0253VisualRefinements">
+/* Preserve functional states while removing blue from resting Rhythm Designer pads. */
+html body[data-cm-theme] #cmRhythmDesignerUnified .cmRhythmGrid .performancePad:not(.active):not(.isStruck):not(:active):not([aria-pressed="true"]){background:linear-gradient(145deg,#171011,#0b0a0b)!important;border-color:rgba(200,132,91,.35)!important;color:#e9d9c9!important;box-shadow:inset 0 0 0 1px rgba(220,155,103,.06)!important;filter:none!important}
+html body[data-cm-theme] #cmRhythmDesignerUnified .cmRhythmGrid .performancePad.drumPad:not(.active):not(.isStruck):not(:active):not([aria-pressed="true"]){border-color:rgba(213,145,104,.4)!important}
+html body[data-cm-theme] #cmRhythmDesignerUnified .cmRhythmGrid .performancePad.active,
+html body[data-cm-theme] #cmRhythmDesignerUnified .cmRhythmGrid .performancePad.isStruck,
+html body[data-cm-theme] #cmRhythmDesignerUnified .cmRhythmGrid .performancePad[aria-pressed="true"]{background:linear-gradient(140deg,#bd5824,#f39840)!important;border-color:#ffd08d!important;color:#fff6e9!important;box-shadow:0 0 15px rgba(245,130,51,.55)!important}
+/* Match Sound Banks to the existing Acid Pattern Bank Factory Demonstrations housing. */
+html body[data-cm-theme] #cmSynthesisLibrary #cmSoundBanks,
+html body[data-cm-theme] #cmSoundBanks{background:linear-gradient(125deg,rgba(242,217,114,.16),rgba(231,153,70,.12) 52%,rgba(25,24,22,.82))!important;border-color:rgba(246,195,101,.5)!important}
+/* Docked, nonfloating utilities. No audio or routing controls removed. */
+#cm0253UtilityDock{position:relative;z-index:1;margin:12px 0;display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start}
+#cm0253UtilityDock>details{flex:1 1 270px;min-width:0;border:1px solid rgba(205,145,105,.23);border-radius:12px;background:#0c0a0c;color:#e8d8c9;padding:9px 12px}
+#cm0253UtilityDock>details>summary{cursor:pointer;color:#e6b88e;font-size:12px;font-weight:700;letter-spacing:.07em}
+#cm0253UtilityDock .cm26Master{position:static!important;top:auto!important;z-index:auto!important;margin-top:10px;background:#100c0e!important;border:1px solid rgba(209,144,101,.25)!important;border-radius:9px;box-shadow:none!important}
+#cm0253UtilityDock #cm0231Themes{position:static!important;right:auto!important;bottom:auto!important;z-index:auto!important;margin-top:10px;max-width:100%;box-shadow:none!important;background:#0d0a0c!important;border-color:rgba(200,140,100,.25)!important}
+</style>
+<script id="cm0253DockUtilities">
+(function(){'use strict';
+function dock(){
+ const master=document.querySelector('.cm26Master'),themes=document.getElementById('cm0231Themes');
+ if(!master&&!themes)return;
+ if(document.getElementById('cm0253UtilityDock'))return;
+ const dock=document.createElement('section');dock.id='cm0253UtilityDock';dock.setAttribute('aria-label','Additional performance and appearance controls');
+ const anchor=document.getElementById('performanceKeyboard')||document.querySelector('main')||document.body;
+ anchor.parentNode.insertBefore(dock,anchor);
+ function fold(name,el){if(!el)return;const d=document.createElement('details');const sum=document.createElement('summary');sum.textContent=name;d.append(sum,el);dock.append(d)}
+ fold('Master Control · audio and transport',master);
+ fold('Appearance · Colour Universe',themes);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',dock,{once:true});else dock();
+window.addEventListener('load',dock,{once:true});
+})();
+</script>
+</body>
 <style id="cmV14TabletTripletAccessibility">
 /* Keep all three octave surfaces available at every viewport width.
    A horizontally scrollable instrument strip replaces the earlier hide-on-tablet rules. */
@@ -4336,7 +5096,100 @@ target.onchange=refresh;refresh();
  box-sizing:border-box!important;overflow:visible!important;
 }
 #rack #seqA,#rack #seqB,#rack #v16EngineA,#rack #v16EngineB{max-width:none!important;min-width:0!important;box-sizing:border-box!important;}
-</style></html>
+</style><style id="cm0232UnifiedConsoleDesign">
+/* 0232 experimental visual skin only: no changes to synthesis, routing or controls. */
+body[data-cm-theme="midnight"]{--cm-accent:#45d9ed;--cm-second:#9a85ef;--cm-ink:#d9e7f1;--cm-border:#235b74;--cm-panel:#0c131c;--cm-raised:#14202b;--cm-selected:#12364a}
+body[data-cm-theme="nebula"]{--cm-accent:#e5a254;--cm-second:#56c8b4;--cm-ink:#f0e1d2;--cm-border:#795037;--cm-panel:#17120f;--cm-raised:#251c17;--cm-selected:#46301c}
+body[data-cm-theme="chromatic"]{--cm-accent:#bb85f5;--cm-second:#f077ba;--cm-ink:#eee2fc;--cm-border:#7046a0;--cm-panel:#14101c;--cm-raised:#21182c;--cm-selected:#39234c}
+body[data-cm-theme]{--bg:#07090c!important;--panel:var(--cm-panel)!important;--edge:var(--cm-border)!important;--gold:var(--cm-second)!important;--teal:var(--cm-accent)!important;--txt:var(--cm-ink)!important;background:#07090c!important;color:var(--cm-ink)!important}
+body[data-cm-theme] header,body[data-cm-theme] .intro{background:#07090c!important;color:var(--cm-ink)!important;border-color:var(--cm-border)!important}
+body[data-cm-theme] .rack{background:#07090c!important;border-color:var(--cm-border)!important;box-shadow:none!important}
+body[data-cm-theme] .module,body[data-cm-theme] .drumPanel,body[data-cm-theme] #cmMixer226,
+body[data-cm-theme] [class*="Panel"],body[data-cm-theme] [class*="panel"],body[data-cm-theme] [class*="Rack"],body[data-cm-theme] [class*="rack"]:not(.rack),
+body[data-cm-theme] [id^="cmVintage"],body[data-cm-theme] [id^="cmSynth"]{
+ background-color:var(--cm-panel)!important;background-image:none!important;border-color:var(--cm-border)!important;box-shadow:none!important;color:var(--cm-ink)!important}
+body[data-cm-theme] .module h2,body[data-cm-theme] .module .inside,body[data-cm-theme] [class*="Panel"] h2,
+body[data-cm-theme] [class*="panel"] h2{background:var(--cm-raised)!important;background-image:none!important;color:var(--cm-ink)!important;border-color:var(--cm-border)!important}
+body[data-cm-theme] button,body[data-cm-theme] select,body[data-cm-theme] input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),
+body[data-cm-theme] textarea{background:var(--cm-raised)!important;background-image:none!important;color:var(--cm-ink)!important;border:1px solid var(--cm-border)!important;box-shadow:none!important}
+body[data-cm-theme] button.active,body[data-cm-theme] button[aria-pressed="true"],body[data-cm-theme] .step.on,
+body[data-cm-theme] .cmMixBank.active{background:var(--cm-selected)!important;border-color:var(--cm-accent)!important;color:var(--cm-ink)!important}
+body[data-cm-theme] input[type="range"],body[data-cm-theme] input[type="checkbox"]{accent-color:var(--cm-accent)!important}
+body[data-cm-theme] .module .port,body[data-cm-theme] .cmMixStrip{background:var(--cm-panel)!important;background-image:none!important;border-color:var(--cm-border)!important;box-shadow:none!important}
+body[data-cm-theme] #cmMixer226 .cmMixGrid{background:#07090c!important}
+body[data-cm-theme] #cmMixer226 .cmMixStrip{border-top:2px solid var(--cm-border)!important}
+body[data-cm-theme="chromatic"] #cmMixer226 .cmMixStrip:nth-child(6n+1){border-top-color:#65d7f4!important}
+body[data-cm-theme="chromatic"] #cmMixer226 .cmMixStrip:nth-child(6n+2){border-top-color:#a88afa!important}
+body[data-cm-theme="chromatic"] #cmMixer226 .cmMixStrip:nth-child(6n+3){border-top-color:#f077ba!important}
+body[data-cm-theme="chromatic"] #cmMixer226 .cmMixStrip:nth-child(6n+4){border-top-color:#efb86b!important}
+body[data-cm-theme="chromatic"] #cmMixer226 .cmMixStrip:nth-child(6n+5){border-top-color:#67d4b7!important}
+body[data-cm-theme] #cm0231Themes{background:#080c11f5!important;border:1px solid var(--cm-accent)!important;box-shadow:0 6px 22px #000b!important}
+body[data-cm-theme] #cm0231Themes label{color:var(--cm-ink)!important}
+body[data-cm-theme] #cm0231Themes select{background:var(--cm-raised)!important;border-color:var(--cm-border)!important}
+/* Only actual audio activity should light up meters; remove decorative panel pulsing. */
+body[data-cm-theme] #cmMixer226{box-shadow:none!important}
+body[data-cm-reactive="on"] #cmMixer226{box-shadow:none!important}
+@media(prefers-reduced-motion:reduce){body[data-cm-theme] *{transition-duration:0s!important}}
+</style>
+
+<style id="cm0243ActiveControlAndMenuFix">
+/* Last-in-document overrides: keep approved instrument surfaces intact. */
+#cm29fEarthFamily #cm29 #cm29balafon .cm29bar.hit,
+#cm29fEarthFamily #cm29 #cm29balafon .cm29bar:active,
+#cm29fEarthFamily #cm29 #cm29balafon .cm29bar.active {
+  background:rgba(114,244,188,.23)!important;
+  border-color:#a5f9d4!important;
+  box-shadow:inset 0 0 13px rgba(113,249,193,.24),0 0 13px rgba(113,249,193,.5)!important;
+  color:#d8ffed!important;filter:none!important;
+}
+#cm29fEarthFamily #cm29 #cm29balafon .cm29bar.hit::before,
+#cm29fEarthFamily #cm29 #cm29balafon .cm29bar.hit::after {opacity:.3!important}
+#cm29fEarthFamily #cm29 #cm29tonguesteps .cm29step.on,
+#cm29fEarthFamily #cm29 #cm29tonguesteps button.on {
+  background:rgba(71,229,149,.92)!important;
+  color:#061c14!important;
+  border:1px solid #a4ffd0!important;
+  box-shadow:0 0 10px rgba(68,246,155,.5)!important;
+  opacity:1!important;
+}
+#cm29fEarthFamily #cm29 #cm29tonguesteps .cm29step.playing {
+  outline:2px solid #d3ffe7!important;outline-offset:1px!important;
+}
+/* No changes to handpan sequencer. */
+/* Master FX controls are toggled by script; active text is updated to ON. */
+#optionalMasterFX button[id^="fx"]:not([id$="Level"]),
+.fxCards .fxCard button[id^="fx"] {
+  transition:background .14s,border-color .14s,box-shadow .14s!important;
+}
+.fxCards .fxCard button[id^="fx"][data-cm-active="true"] {
+  background:rgba(255,149,61,.22)!important;
+  border:1px solid #ffab60!important;
+  color:#ffe0b5!important;
+  box-shadow:0 0 12px rgba(255,146,55,.42),inset 0 0 8px rgba(255,146,55,.16)!important;
+}
+/* Native drop-down popups: options are dark where browser permits. */
+html body select,html body select option,html body select optgroup {
+  color-scheme:dark!important;background-color:#101417!important;color:#edf3f3!important;
+}
+html body select:focus {outline-color:#f5a65e!important}
+/* Remove decorative spirals only from balafon. */
+#cm29fEarthFamily #cm29 .cm29surface:has(#cm29balafon) .cm29geometry,
+#cm29fEarthFamily #cm29 #cm29balafon .cm29geometry {display:none!important}
+</style>
+<script id="cm0243FxStateIndicator">
+(function(){
+ function refresh(){
+  document.querySelectorAll('.fxCards .fxCard button[id^="fx"]').forEach(function(b){
+   var on=/\bON\b/i.test(b.textContent||'')&&!/\bOFF\b/i.test(b.textContent||'');
+   b.setAttribute('data-cm-active',on?'true':'false');
+  });
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
+ function setup(){refresh();var host=document.querySelector('.fxCards');if(host){host.addEventListener('click',function(){requestAnimationFrame(refresh)});}}
+})();
+</script>
+
+</html>
 <style id="cmXYCompletionCSS">
 /* Fixed-position miniature icons: never participate as an anonymous grid item. */
 #rack .v16Card.cmEngineInline>label{position:relative!important;display:flex!important;align-items:center!important;gap:8px!important;padding-right:62px!important;min-height:36px!important;grid-template-columns:none!important}
@@ -4455,4 +5308,157 @@ function boot(){init('A');init('B')}if(document.readyState==='loading')document.
 
 <style id="cm204UnifiedCreatorCredit">
 #cmFinalInfoPane .cmFooterCredit {display:block!important;text-align:center!important;white-space:nowrap!important;font-family:inherit!important;font-size:clamp(13px,2.8vw,17px)!important;font-weight:700!important;letter-spacing:.18em!important;color:#a7bfc9!important;text-transform:uppercase!important;line-height:1.4!important;}
+</style>
+
+
+<style id="cm0234MutedSpectrumTest">
+/* 0234 visual-only experimental palette: lower saturation and less solid blue.
+   Preserve all existing interactive elements, handpan/tank-note rules and DSP. */
+body[data-cm-theme="midnight"]{
+ --cm-accent:#93a9a9;--cm-second:#ad9888;--cm-ink:#e0e0da;
+ --cm-border:#525e60;--cm-panel:rgba(19,22,23,.67);
+ --cm-raised:rgba(29,32,32,.82);--cm-selected:#384441;
+}
+body[data-cm-theme="nebula"]{
+ --cm-accent:#baa58d;--cm-second:#9ba69b;--cm-ink:#e4ded6;
+ --cm-border:#686058;--cm-panel:rgba(25,23,22,.67);
+ --cm-raised:rgba(36,32,29,.82);--cm-selected:#49413a;
+}
+body[data-cm-theme="chromatic"]{
+ --cm-accent:#aaa3b8;--cm-second:#b3a29b;--cm-ink:#e5e0e8;
+ --cm-border:#655e6c;--cm-panel:rgba(23,22,26,.67);
+ --cm-raised:rgba(34,32,37,.82);--cm-selected:#403b46;
+}
+body[data-cm-theme]{background:#090a0b!important}
+body[data-cm-theme] .rack{background:#090a0b!important}
+body[data-cm-theme] .module,
+body[data-cm-theme] .drumPanel,
+body[data-cm-theme] [class*="Panel"],
+body[data-cm-theme] [class*="panel"],
+body[data-cm-theme] [class*="Rack"],
+body[data-cm-theme] [class*="rack"]:not(.rack),
+body[data-cm-theme] [id^="cmVintage"],
+body[data-cm-theme] [id^="cmSynth"],
+body[data-cm-theme] #cmMixer226{
+ background-color:var(--cm-panel)!important;
+ border-color:var(--cm-border)!important;
+}
+body[data-cm-theme] .module h2,
+body[data-cm-theme] .module .inside,
+body[data-cm-theme] [class*="Panel"] h2,
+body[data-cm-theme] [class*="panel"] h2{
+ background:rgba(26,29,29,.68)!important;
+ border-color:var(--cm-border)!important;
+}
+body[data-cm-theme] .cmMixStrip,
+body[data-cm-theme] .module .port{background:rgba(25,27,28,.62)!important}
+/* Natural stone and subdued bronze replace mint/blue note rims. */
+body[data-cm-theme] #tonalPads button,
+body[data-cm-theme] #cmTripleHandpanRow .tonalPads button,
+body[data-cm-theme] #cm29 .cm29note{
+ background:linear-gradient(150deg,#77786c,#454a45 72%,#292e2b)!important;
+ border-color:#b4aa93!important;color:#f2eee3!important;
+ box-shadow:inset 0 2px 8px #e0d7ba20,0 0 5px #b3a48b22!important;
+ opacity:1!important;visibility:visible!important;
+}
+body[data-cm-theme] #tonalPads button:active,
+body[data-cm-theme] #cmTripleHandpanRow .tonalPads button:active,
+body[data-cm-theme] #cm29 .cm29note:active{
+ background:#c2b49a!important;color:#171a19!important;
+ box-shadow:0 0 9px #c2b49a77!important;
+}
+body[data-cm-theme] .tonalPanel,
+body[data-cm-theme] #cmTripleHandpanRow,
+body[data-cm-theme] #cm29 .cm29instrument{
+ background:rgba(22,25,24,.48)!important;
+ border-color:rgba(140,136,119,.50)!important;
+}
+body[data-cm-theme] #cm29 .cm29surface{background:rgba(18,20,20,.28)!important}
+/* More neutral rhythmic gate / sound-design sections without hiding controls. */
+body[data-cm-theme] [class*="gate" i],
+body[data-cm-theme] [class*="resonance" i],
+body[data-cm-theme] [class*="soundDesign" i]{border-color:#686861!important}
+body[data-cm-theme] .cmXYWaveCanvas{background:#111518!important;border-color:#505a5b!important}
+body[data-cm-theme] #cm0231Themes{border-color:#687476!important;background:rgba(13,15,16,.95)!important}
+/* Keep the original header typography, notes and all input hit targets untouched. */
+</style>
+
+<style id="cm0245AestheticCorrections">
+/* 0245: sound design cards are opaque to underlying patch wiring, while softly tinted. */
+html body #rack #v16EngineA,html body #rack #v16EngineB{
+ position:relative!important;z-index:30!important;isolation:isolate!important;
+ background:linear-gradient(135deg,#222c29 0%,#202725 35%,#2b2823 72%,#1c2426 100%)!important;
+ background-color:#222725!important;
+ box-shadow:0 12px 24px rgba(0,0,0,.38)!important;
+}
+html body #rack svg#svg{z-index:1!important;pointer-events:none}
+/* Warm pastel acid-house palette on the pattern bank only. */
+html body[data-cm-theme] #cmSynthesisLibrary section:has(#cmAcidPattern){
+ background:linear-gradient(125deg,rgba(242,217,114,.16),rgba(231,153,70,.12) 52%,rgba(25,24,22,.82))!important;
+ border-color:rgba(246,195,101,.5)!important;
+}
+html body #cmSynthesisLibrary section:has(#cmAcidPattern)>h3{color:#f7d87d!important}
+/* Master FX: quiet housings, clearly illuminated ON buttons. */
+html body[data-cm-theme] .fxCards .fxCard{
+ background:linear-gradient(135deg,rgba(33,39,41,.24),rgba(23,26,27,.15))!important;
+ border-color:rgba(153,165,165,.34)!important;
+}
+html body[data-cm-theme] .fxCards .fxCard button[id^="fx"]{background:rgba(24,29,30,.52)!important;color:#e0e8e4!important;border:1px solid rgba(145,160,158,.55)!important}
+html body[data-cm-theme] .fxCards .fxCard button[id^="fx"][data-cm-active="true"]{
+ background:linear-gradient(135deg,rgba(255,169,72,.4),rgba(255,116,54,.28))!important;
+ border:1px solid #ffc177!important;color:#fff1ce!important;
+ box-shadow:0 0 16px rgba(255,158,64,.52),inset 0 0 10px rgba(255,194,92,.22)!important;
+}
+/* Command hub is warm tinted glass; activated pads unchanged. */
+html body[data-cm-theme] #cmHub,html body[data-cm-theme] #cmHub #cm31eLaunchDeck{
+ background:linear-gradient(125deg,rgba(255,179,113,.115),rgba(41,39,34,.25) 44%,rgba(153,222,165,.10))!important;
+ border-color:rgba(188,175,142,.40)!important;
+}
+/* Handpan note surfaces match translucent tank drum keys, retaining live hit illumination. */
+html body[data-cm-theme] #cm29fEarthFamily #cm29 .cmV10Triplet .cm29note:not(.hit):not(:active),
+html body[data-cm-theme] #cmTripleHandpanRow .tonalPads button:not(.hit):not(:active),
+html body[data-cm-theme] #tonalPads button:not(.hit):not(:active){
+ background:linear-gradient(145deg,rgba(150,174,159,.14),rgba(35,53,47,.24))!important;
+ border-color:rgba(159,204,184,.58)!important;
+ box-shadow:inset 0 1px 5px rgba(202,239,216,.08)!important;
+}
+
+/* Beta 0248: quiet, layered signal-flow overview; keep routing content intact. */
+html body .signalFlowPanel {
+ background:linear-gradient(135deg,rgba(12,20,23,.87),rgba(19,29,29,.88))!important;
+ border-color:rgba(120,165,164,.28)!important;
+}
+html body .signalFlowPanel .signalSource {
+ background:linear-gradient(145deg,rgba(26,42,45,.48),rgba(12,22,26,.35))!important;
+ border:1px solid rgba(132,174,178,.26)!important;
+ box-shadow:none!important;
+}
+html body .signalFlowPanel .flowDestination {
+ background:linear-gradient(115deg,rgba(25,48,47,.54),rgba(13,26,29,.52))!important;
+ border-color:rgba(125,208,187,.42)!important;
+ box-shadow:none!important;
+}
+/* Earth Rhythms: the expanded sequencer housings are opaque woodland tones,
+   without changing the notes, pads, controls, or illuminated sequence states. */
+html body[data-cm-theme] #tonalPanel .tonalSeqScroll {
+ background:linear-gradient(124deg,#1d2922 0%,#222b22 45%,#2a261f 100%)!important;
+ border:1px solid rgba(139,160,120,.38)!important;
+ border-radius:12px!important;
+ padding:12px!important;
+ box-sizing:border-box!important;
+}
+html body[data-cm-theme] #cm29 .cm29advanced[data-kind="tongue"] {
+ background:linear-gradient(125deg,#202b22 0%,#272b21 53%,#222520 100%)!important;
+ border:1px solid rgba(146,163,112,.34)!important;
+ border-radius:12px!important;
+ padding:12px!important;
+ box-sizing:border-box!important;
+}
+html body[data-cm-theme] #cm29 .cm29advanced[data-kind="bal"] {
+ background:linear-gradient(125deg,#202b23 0%,#2a2a21 49%,#30261f 100%)!important;
+ border:1px solid rgba(155,143,107,.36)!important;
+ border-radius:12px!important;
+ padding:12px!important;
+ box-sizing:border-box!important;
+}
 </style>
