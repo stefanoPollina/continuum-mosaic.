@@ -20,7 +20,7 @@
 
 .tonalPanel{margin:14px 16px;padding:17px;border:1px solid #6f8d91;border-radius:13px;background:linear-gradient(125deg,#172c30,#141b22);color:#e4ecea}.tonalPanel h2{color:#9fd7d1;margin:0 0 8px}.tonalControls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0}.tonalControls label{display:flex;flex-direction:column;gap:4px;font-size:12px}.tonalControls input[type=range]{width:115px}.tonalPanel button.active{background:#376b65;border-color:#9fd7d1}.tonalPads{position:relative;width:min(100%,350px);aspect-ratio:1;margin:14px auto;border-radius:50%;background:radial-gradient(circle at 40% 30%,#415d62,#17292c 75%);border:4px solid #648b89;box-shadow:inset 0 0 25px #091317,0 10px 28px #0005}.tonalPads button{position:absolute;transform:translate(-50%,-50%);width:18%;height:18%;padding:0;border-radius:50%;background:radial-gradient(circle at 35% 25%,#708f91,#31494c);border:1px solid #aac5bf;color:#fff;font-size:11px;touch-action:manipulation}.tonalPads button.centre{width:25%;height:25%;background:radial-gradient(circle at 35% 25%,#b9a783,#62533c);border:2px solid #dec9a0}.tonalPads button.selected{outline:3px solid #e7ca8c}.tonalPads button:active{background:#8faba7}.tonalSeqScroll{overflow-x:auto}.tonalSeq{display:grid;grid-template-columns:repeat(16,minmax(43px,1fr));gap:5px;min-width:760px}.tonalStep{display:flex;flex-direction:column;gap:5px;align-items:stretch}.tonalStep button{min-height:34px}.tonalStep button.on{background:#376b65;border-color:#9fd7d1}.tonalStep button.playing{outline:2px solid #e7ca8c}.tonalStep select{width:100%;font-size:11px;background:#20363a;color:#f0f4f2;border:1px solid #648b89;border-radius:5px}.tonalNote{font-size:12px;color:#c4d7d2}
 
-.resonanceAddon{margin-top:16px;padding:14px;border:1px solid #507b77;border-radius:10px;background:#112325}.resonanceAddon h3{color:#a5ded2;margin:0 0 8px}.resonanceLanes{display:grid;gap:9px}.resonanceLane{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.resonanceLane strong{min-width:115px;font-size:12px}.resonanceSteps{display:flex;gap:4px;flex-wrap:wrap}.resonanceSteps button{min-width:29px;height:33px;border:1px solid #4d6666;background:#202c30;color:#b9c9c8;border-radius:5px}.resonanceSteps button.on{background:#548e7f;color:#fff}.resonanceAddon .droneControls{margin:8px 0}
+.resonanceAddon{margin-top:16px;padding:14px;border:1px solid #49ed95;border-radius:10px;background:#112325}.resonanceAddon h3{color:#a5ded2;margin:0 0 8px}.resonanceLanes{display:grid;gap:9px}.resonanceLane{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.resonanceLane strong{min-width:115px;font-size:12px}.resonanceSteps{display:flex;gap:4px;flex-wrap:wrap}.resonanceSteps button{min-width:29px;height:33px;border:1px solid #4d6666;background:#202c30;color:#b9c9c8;border-radius:5px}.resonanceSteps button.on{background:#548e7f;color:#fff}.resonanceAddon .droneControls{margin:8px 0}
 
 /* Presentation-only clarity layer; Web Audio routing and draggable modules unchanged. */
 .synthLab{border-color:#ba9560;background:#211f24;margin-top:12px}
@@ -48,7 +48,7 @@
 .performanceKeyboard h2{font-size:17px;color:#a8d9df;margin:0 0 7px}.keyboardTargets{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}.keyboardTargets label{display:flex;gap:5px;align-items:center;border:1px solid #526a72;border-radius:7px;padding:7px 9px;font-size:12px}.keyboardTargets input{accent-color:#75c9c3}.keyboardSettings{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:10px 0}.keyboardSettings select{background:#263c43;color:white;padding:6px}.keyboardScroll{overflow-x:auto;overscroll-behavior-x:contain;padding-bottom:8px}.keyboardKeys{display:flex;position:relative;height:156px;width:max-content;touch-action:pan-x;user-select:none}.keyboardWhite{width:47px;height:154px;border:1px solid #65717c;border-radius:0 0 5px 5px;background:#e5e8e6;color:#27343c;position:relative;display:flex;align-items:end;justify-content:center;padding-bottom:12px;font-size:11px;touch-action:none}.keyboardWhite.pressed{background:#9accc9}.keyboardBlack{position:absolute;top:0;width:29px;height:94px;z-index:2;background:linear-gradient(#303b44,#10141a);border:1px solid #080c12;border-radius:0 0 4px 4px;color:white;touch-action:none}.keyboardBlack.pressed{background:#3e979c}.keyboardHint{font-size:12px;opacity:.75;margin-top:7px}
 .pitchEditor{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0;padding:10px;background:#102a32;border:1px solid #6b9e99;border-radius:8px}.pitchEditor label{display:flex;flex-direction:column;gap:5px;font-size:12px}.pitchEditor select{width:100%;min-height:42px}.pitchEditor strong{grid-column:1/-1;color:#efba65}.step.chosen{outline:2px solid #efba65}@media(max-width:700px){.pitchEditor{grid-template-columns:1fr 1fr}.pitchEditor select{font-size:16px}}
 </style><style>
-.dronePanel{margin:18px 12px;padding:16px;border:1px solid #7d6844;border-radius:12px;background:linear-gradient(135deg,#211d19,#151b21);color:#e9e2d2}.dronePanel h2{color:#e8bd7c;font-size:17px;letter-spacing:.08em}.droneControls{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:12px 0}.droneControls label{display:flex;flex-direction:column;gap:5px;font-size:12px}.droneControls input[type=range]{width:120px}.droneGrid{display:grid;grid-template-columns:repeat(16,minmax(30px,1fr));gap:5px;min-width:560px}.droneGrid button{min-height:42px;border:1px solid #67553d;background:#292d30;color:#b9c3c7;border-radius:6px}.droneGrid button.on{background:#997447;color:#fff}.droneGrid button.playing{outline:2px solid #e8d6a7}.droneScroll{overflow-x:auto}.dronePanel button.active{background:#936b35;color:#fff}.dronePanel .small{font-size:12px;opacity:.8}
+.dronePanel{margin:18px 12px;padding:16px;border:1px solid #49ed95;border-radius:12px;background:linear-gradient(135deg,#211d19,#151b21);color:#e9e2d2}.dronePanel h2{color:#e8bd7c;font-size:17px;letter-spacing:.08em}.droneControls{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:12px 0}.droneControls label{display:flex;flex-direction:column;gap:5px;font-size:12px}.droneControls input[type=range]{width:120px}.droneGrid{display:grid;grid-template-columns:repeat(16,minmax(30px,1fr));gap:5px;min-width:560px}.droneGrid button{min-height:42px;border:1px solid #67553d;background:#292d30;color:#b9c3c7;border-radius:6px}.droneGrid button.on{background:#997447;color:#fff}.droneGrid button.playing{outline:2px solid #e8d6a7}.droneScroll{overflow-x:auto}.dronePanel button.active{background:#936b35;color:#fff}.dronePanel .small{font-size:12px;opacity:.8}
 </style><style>
 .scenePanel{margin:14px 12px;padding:16px;border:1px solid #517879;border-radius:13px;background:linear-gradient(120deg,#152b31,#20262d);color:#e3f2ed}.scenePanel h2{margin:0 0 8px;font-size:17px;letter-spacing:.08em}.sceneButtons{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0}.sceneButtons button{border:1px solid #698b8a;border-radius:9px;background:#263e45;color:#e5f6ef;padding:12px 15px;cursor:pointer;font-weight:700}.sceneButtons button.chosen{background:#b1d7c8;color:#10272c}.scenePanel p{font-size:13px;line-height:1.5;color:#b9d2ce;margin:6px 0}.scenePanel .sceneStatus{font-weight:700;color:#e7dfb0}
 </style>
@@ -97,7 +97,7 @@
 .exprAdvanced .keyboardExpressionGrid{padding:10px 2px 3px;grid-template-columns:repeat(auto-fit,minmax(145px,1fr))}
 .exprNote{font-size:11px;opacity:.7}
 @media(max-width:600px){.exprAdvanced summary span{display:none}.exprQuick{gap:8px}}
-</style><style id="didgStyle">.didgLab{margin-top:14px;padding:12px;border:1px solid #6d856f;border-radius:11px;background:#152524}.didgLab>summary{cursor:pointer;color:#bfe5ce;font-weight:750;letter-spacing:.055em}.didgTag{font-size:10px;font-weight:500;opacity:.7;margin-left:8px}.didgScroll{overflow-x:auto}.didgStepGrid{display:grid;grid-template-columns:repeat(16,minmax(100px,1fr));gap:6px;min-width:1640px;margin:12px 0}.didgStep{padding:7px;border:1px solid #455d58;border-radius:8px;background:#1c302e;display:flex;flex-direction:column;gap:6px}.didgStep.playing{outline:2px solid #c8e8b5}.didgStep strong{font-size:11px;color:#c1d8ca}.didgStep select{max-width:100%;background:#233e39;color:#e1efe8;border:1px solid #536b61;padding:5px;border-radius:4px;font-size:11px}.didgLab .droneControls input[type=range]{width:105px}.didgLab output{font-size:11px;color:#b9d6c2}</style><style>
+</style><style id="didgStyle">.didgLab{margin-top:14px;padding:12px;border:1px solid #49ed95;border-radius:11px;background:#152524}.didgLab>summary{cursor:pointer;color:#bfe5ce;font-weight:750;letter-spacing:.055em}.didgTag{font-size:10px;font-weight:500;opacity:.7;margin-left:8px}.didgScroll{overflow-x:auto}.didgStepGrid{display:grid;grid-template-columns:repeat(16,minmax(100px,1fr));gap:6px;min-width:1640px;margin:12px 0}.didgStep{padding:7px;border:1px solid #455d58;border-radius:8px;background:#1c302e;display:flex;flex-direction:column;gap:6px}.didgStep.playing{outline:2px solid #c8e8b5}.didgStep strong{font-size:11px;color:#c1d8ca}.didgStep select{max-width:100%;background:#233e39;color:#e1efe8;border:1px solid #536b61;padding:5px;border-radius:4px;font-size:11px}.didgLab .droneControls input[type=range]{width:105px}.didgLab output{font-size:11px;color:#b9d6c2}</style><style>
 /* Stage 29f: only group existing instrument panels; preserve original handpan rendering. */
 #cm29fEarthFamily{margin:16px 0 22px;padding:14px;border:1px solid rgba(89,176,145,.28);border-radius:16px}
 #cm29fEarthFamily>h2{margin:0 0 12px;font-size:1.08rem;letter-spacing:.05em}
@@ -143,7 +143,7 @@
 @media(max-width:780px){#cm29 .cm29seq,#cm29 .cm29notegrid{grid-template-columns:repeat(8,minmax(0,1fr))!important}}
 </style><style id="cm29rTitleRestoration">.brandMasthead .brandBeta{font-size:10px;color:#edf3f6;letter-spacing:.04em;line-height:1.3;margin-top:2px}.brandMasthead .brandCredit{text-align:center;font-size:10px;letter-spacing:.08em;color:#a4b1bc;margin-top:7px}.brandMasthead .brandCredit>div+div{margin-top:3px}</style><style id="stage29tUnifiedEarthLayout">
 /* Stage 29T: one Earth Rhythms family, three equal-width vertically stacked instruments. Visual only. */
-#cm29fEarthFamily{box-sizing:border-box;width:100%;max-width:1500px;margin:16px auto 22px;padding:18px;border:1px solid rgba(89,176,145,.4);border-radius:18px;background:linear-gradient(145deg,#16242a,#253238)}
+#cm29fEarthFamily{box-sizing:border-box;width:100%;max-width:1500px;margin:16px auto 22px;padding:18px;border:1px solid #49ed95;border-radius:18px;background:linear-gradient(145deg,#16242a,#253238)}
 #cm29fEarthFamily>#tonalPanel{box-sizing:border-box;width:100%;max-width:none;margin:0 0 16px!important;padding:18px;border:1px solid #5c827d;border-radius:14px;background:linear-gradient(125deg,#172c30,#141b22)}
 #cm29fEarthFamily>#cm29{box-sizing:border-box;width:100%;max-width:none;margin:0!important;padding:0!important;border:0!important;border-radius:0;background:none!important}
 #cm29fEarthFamily>#cm29>.cm29instruments{display:flex!important;flex-direction:column!important;gap:16px!important;width:100%}
@@ -193,7 +193,7 @@
 @media(max-width:600px){#cm29fEarthFamily #cm29 #cm29balafon{width:100%!important;height:230px!important;padding:26px 10px 46px!important;gap:3px!important}#cm29fEarthFamily #cm29 #cm29balafon .cm29bar{max-height:120px!important;font-size:10px!important}#cm29fEarthFamily #cm29 .cm29surface:has(#cm29balafon){min-height:270px}}
 </style><style id="stage29vTonalFamilyRefinement">
 /* 29V: presentation-only tonal-family unification. Do not modify audio, controls, IDs or scripts. */
-#cm29fEarthFamily{--earth-edge:rgba(91,177,151,.48);--earth-inner:#172c30;--earth-glow:rgba(74,183,142,.12)}
+#cm29fEarthFamily{--earth-edge:#49ed95;--earth-inner:#172c30;--earth-glow:rgba(73,237,149,.18)}
 #cm29fEarthFamily>#tonalPanel,
 #cm29fEarthFamily>#cm29 .cm29instrument{
   border:1px solid var(--earth-edge)!important;border-radius:18px!important;
@@ -630,7 +630,7 @@ body[data-cm-theme] .drumGrid button.hit,body[data-cm-theme] .microStepGroup but
 body[data-cm-theme] .earthSteps button.hit,body[data-cm-theme] #earthPanel button.hit{background:#255e46!important;border-color:#68d89a!important;color:#e7ffef!important;font-weight:750!important}
 body[data-cm-theme] #earthPanel,body[data-cm-theme] #tonalPanel,body[data-cm-theme] #cm29fEarthFamily,body[data-cm-theme] #cmTripleHandpanRow{background:linear-gradient(135deg,rgba(12,17,17,.31),rgba(23,29,27,.21))!important}
 /* Unified active-green outlines: Rhythm Designer through the final Earth Rhythms resonant drone. Existing pane interiors and audio/control scripts remain unchanged. */
-html body #drumPerformancePads,html body .drumPanel:not(#polyPanel),html body #earthPerformancePads,html body #earthPanel,html body #cm29fEarthFamily,html body #cm29fEarthFamily>#tonalPanel,html body #cm29fEarthFamily #cm29 .cm29instrument,html body #dronePanel{border-color:#59c88a!important}
+html body #drumPerformancePads,html body .drumPanel:not(#polyPanel),html body #earthPerformancePads,html body #earthPanel,html body #cm29fEarthFamily,html body #cm29fEarthFamily>#tonalPanel,html body #cm29fEarthFamily #cm29 .cm29instrument,html body #dronePanel,html body #resonanceAddon,html body #didgLab{border-color:#49ed95!important}
 body[data-cm-theme] #tonalPads,body[data-cm-theme] .tonalPads,body[data-cm-theme] #cm29balafon,body[data-cm-theme] #cm29 .cm29surface{background:rgba(10,14,14,.16)!important;box-shadow:none!important}
 body[data-cm-theme] #cm29balafon .cm29bar{background:linear-gradient(180deg,rgba(114,97,80,.23),rgba(28,28,27,.20))!important;border-color:rgba(170,145,117,.67)!important;box-shadow:none!important}
 body[data-cm-theme] #cm29balafon .cm29bar:before{opacity:.24!important;filter:saturate(.45)!important}
@@ -898,7 +898,7 @@ html body #cmSoundBanks{
 .brandMasthead>.cm0292Name{display:inline-block;margin:0 0 0 10px;font:750 16px/1.25 system-ui,-apple-system,Segoe UI,sans-serif;letter-spacing:.055em;color:#c0713c;text-align:left;white-space:nowrap}
 .brandMasthead>.cm0292Name .cm0292Mosaic{color:#e4e0d6}
 #cm0260ControlDock{display:flex!important;flex-direction:column!important}
-#cm0292EngineSignature{order:999;flex:0 0 auto;display:block;width:100%;box-sizing:border-box;margin:0;padding:7px 10px 5px;border-top:1px solid #342b27;background:transparent;color:#b4774c;font:500 10px/1.55 system-ui,-apple-system,Segoe UI,sans-serif;letter-spacing:.018em;text-align:left;pointer-events:none}
+#cm0292EngineSignature{order:999;flex:0 0 auto;display:block;width:100%;box-sizing:border-box;margin:0;padding:7px 10px 5px;border-top:1px solid #342b27;background:transparent;color:#b4774c;font:500 10px/1.55 system-ui,-apple-system,Segoe UI,sans-serif;letter-spacing:.018em;text-align:left;pointer-events:auto}
 #cm0292EngineSignature .cm0293Count{color:#c38b60;font-weight:750;margin-right:8px;white-space:nowrap}
 #cm0292EngineSignature .cm0294Inventory{display:inline;color:#b4774c;overflow-wrap:break-word}
 #cm0292EngineSignature .cm0294Item{display:inline}
@@ -1157,7 +1157,7 @@ document.querySelectorAll('.port').forEach(p=>p.onclick=()=>{const id=p.dataset.
    bay.querySelector('[data-pb-clear]').addEventListener('click',()=>{selected=null;refresh();status('Selection cleared.')});
   }
   const synthRack=document.getElementById('rack');const rackContainer=synthRack?.parentElement;
-  if(rackContainer && rackContainer.nextElementSibling!==bay)rackContainer.insertAdjacentElement('afterend',bay);
+  if(rackContainer && rackContainer.previousElementSibling!==bay)rackContainer.insertAdjacentElement('beforebegin',bay);
   else if(!rackContainer && kb.nextElementSibling!==bay)kb.insertAdjacentElement('afterend',bay);
   refresh();
  }
@@ -4015,11 +4015,13 @@ function relocate(){
  const master=headings.find(h=>h.textContent.includes('OPTIONAL MASTER FX'));
  const masterPanel=master?.closest('section');
  if(visuals && masterPanel)masterPanel.after(visuals);
+ const rackWorkspace=document.getElementById('rackScroll');
+ if(rackWorkspace && masterPanel && rackWorkspace.nextElementSibling!==masterPanel)rackWorkspace.insertAdjacentElement('afterend',masterPanel);
  const scene=document.getElementById('scenePanel');
  const synth=document.getElementById('cmSynthesisLibrary');
  const sonic=document.getElementById('sonicJourneyPanel');
  if(scene&&synth)scene.after(synth);
- if(synth&&sonic)synth.after(sonic);
+ if(scene&&sonic)scene.after(sonic);
  const bank=document.getElementById('presetSelect');
  if(bank){bank.setAttribute('aria-label','Saved complete performances');}
  const info=document.getElementById('cmPerfInfo');
@@ -4061,10 +4063,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
    const pat=lib.querySelector('#cmAcidPattern')?.closest('section');
    if(rack&&pat){const grid=document.createElement('div');grid.className='cmDualBankGrid';rack.before(grid);grid.append(rack,pat);if(sound)grid.append(sound)}
   }
-  // Keep Sonic Soundscapes with the Earth Rhythms family rather than in the core synthesis workspace.
-  const sonic=document.getElementById('sonicJourneyPanel');
-  const earth=document.getElementById('cm29fEarthFamily')||document.getElementById('earthPanel');
-  if(sonic&&earth&&sonic.previousElementSibling!==earth)earth.after(sonic);
   // The balafon is one continuous 27-bar playing surface, spanning lower/main/upper octaves.
   const bal=document.getElementById('cm29balafon');
   if(bal&&!bal.dataset.cmWideOctaves&&bal.querySelectorAll('.cm29bar').length===9&&typeof window.cm29SideStrike==='function'){
@@ -4560,7 +4558,6 @@ body[data-cm-theme] .didgLab,
 body[data-cm-theme] #earthPerformancePads,
 body[data-cm-theme] #continuumPerformanceMatrix{
  background:linear-gradient(145deg,rgba(48,50,48,.23),rgba(13,15,16,.36))!important;
- border-color:rgba(157,155,145,.52)!important;
  box-shadow:inset 0 1px rgba(225,220,205,.035)!important;
 }
 body[data-cm-theme] #cm29 #cm29tongue,
@@ -4703,12 +4700,12 @@ body[data-cm-theme] #earthPanel .earthToolbar button{
  text-shadow:0 1px 1px rgba(0,0,0,.7)!important;
 }
 body[data-cm-theme] .drumEcho button.active,body[data-cm-theme] #tonalPanel .tonalControls button.active,
-body[data-cm-theme] #earthPanel .earthToolbar button.active{border-color:#a5d9c1!important;color:#f4fff6!important}
+body[data-cm-theme] #earthPanel .earthToolbar button.active{border-color:#49ed95!important;color:#f4fff6!important}
 /* Earth Rhythms shell and handpan: subdued green-grey, outlines carry the definition. */
 body[data-cm-theme] #earthPanel,body[data-cm-theme] #tonalPanel,
 body[data-cm-theme] #cmTripleHandpanRow,body[data-cm-theme] #cm29fEarthFamily{
  background:linear-gradient(145deg,rgba(31,44,38,.27),rgba(14,18,19,.29) 65%,rgba(30,35,31,.22))!important;
- border-color:rgba(129,161,142,.65)!important;
+ border-color:#49ed95!important;box-shadow:0 0 0 1px rgba(73,237,149,.32),0 0 15px rgba(73,237,149,.18)!important;
 }
 body[data-cm-theme] #tonalPads,body[data-cm-theme] #cmTripleHandpanRow .tonalPads,
 body[data-cm-theme] #cm29 .cm29surface{
@@ -4725,7 +4722,7 @@ body[data-cm-theme] #tonalPads button,body[data-cm-theme] #cmTripleHandpanRow .t
 body[data-cm-theme] #cm29 .cm29instrument,
 body[data-cm-theme] #cm29 #cm29tongue,body[data-cm-theme] #cm29 #cm29balafon{
  background:rgba(18,22,22,.14)!important;box-shadow:none!important;
- border-color:rgba(138,156,147,.52)!important;
+ border-color:#49ed95!important;
 }
 body[data-cm-theme] #cm29 #cm29tongue .cm29note{
  background:linear-gradient(135deg,rgba(134,163,151,.11),rgba(40,53,51,.07))!important;
@@ -5254,8 +5251,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 <style id="cm0276EarthActiveGreenFrameContinuity">
 /* 0276: frames only; colour sourced from the existing Earth Rhythms ON active button. */
-:root { --cm-earth-active-frame:#98c7a3; }
-body[data-cm-theme] { --cm-earth-active-frame:#a5d9c1; }
+:root { --cm-earth-active-frame:#49ed95; }
+body[data-cm-theme] { --cm-earth-active-frame:#49ed95; }
 /* Earth Rhythms family + the electronic Rhythm Designer family. */
 body .drumPanel, body #earthPanel, body #cm29fEarthFamily,
 body #cm29fEarthFamily > #tonalPanel,
@@ -5338,8 +5335,8 @@ html body #polyPanel, html body #fxPanel {
 
 <style id="cm0281EarthFamilyConsistentOutline">
 /* Use the same illuminated Earth Rhythms ON border, not an approximation. */
-:root{--cm0281EarthGreen:#98c7a3}
-body[data-cm-theme]{--cm0281EarthGreen:#a5d9c1}
+:root{--cm0281EarthGreen:#49ed95}
+body[data-cm-theme]{--cm0281EarthGreen:#49ed95}
 /* Outer sections, nested instruments, performance pads and their sequencer housings. */
 html body .drumPanel:not(#polyPanel),
 html body #drumPerformancePads,
@@ -5389,7 +5386,7 @@ html body #fxPanel{border-color:var(--cmAmberFrame,#dba04d)!important}
 /* One authoritative sticky control dock. Original audio buttons are MOVED, never cloned. */
 html body #cm0260ControlDock{position:sticky!important;top:0!important;left:0!important;z-index:2147483000!important;display:flex!important;flex-direction:column!important;width:100%!important;max-width:none!important;overflow:visible!important;background:#111316!important;opacity:1!important;visibility:visible!important;transform:none!important}
 html body #cm0260ControlDock>#cm229Access{order:0!important;position:relative!important;top:auto!important;display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;min-height:37px!important;visibility:visible!important}
-html body #cm0260ControlDock>.cm26Master{order:1!important;position:relative!important;inset:auto!important;display:flex!important;flex-flow:row nowrap!important;align-items:center!important;gap:8px!important;min-height:48px!important;width:100%!important;overflow-x:auto!important;overflow-y:visible!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important;background:#18242c!important;border-bottom:2px solid #b78c56!important;transform:none!important}
+html body #cm0260ControlDock>.cm26Master{order:1!important;position:relative!important;inset:auto!important;display:flex!important;flex-flow:row wrap!important;align-items:center!important;align-content:center!important;gap:8px!important;min-height:76px!important;height:auto!important;padding:10px 12px 13px!important;width:100%!important;overflow:visible!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important;background:#18242c!important;border-bottom:2px solid #b78c56!important;transform:none!important}
 html body #cm0260ControlDock>.cm26Master button{flex:0 0 auto!important;display:inline-flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;white-space:nowrap!important}
 html body #cm0260ControlDock>.cm26Master .cm26Title{flex:0 0 auto!important;width:auto!important}
 html body #cm0260ControlDock>header{display:none!important}
