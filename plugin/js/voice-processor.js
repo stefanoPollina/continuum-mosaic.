@@ -176,6 +176,7 @@ class MosaicProcessor extends AudioWorkletProcessor {
     this.envStage = 'idle';
     this.envValue = 0;
     this.port.onmessage = (event) => this.onMessage(event.data);
+    this.port.postMessage({ type: 'ready' });
   }
 
   onMessage(msg) {
@@ -369,11 +370,12 @@ class MosaicProcessor extends AudioWorkletProcessor {
 
   process(inputs, outputs) {
     const out = outputs[0];
-    const Lch = out[0];
+    const Lch = out && out[0];
+    if (!Lch) return true;
     const Rch = out[1] || Lch;
     const frames = Lch.length;
-    const sr = sampleRate;
-    const now = currentTime;
+    const sr = this.sr || sampleRate;
+    const now = this.now || currentTime;
     const end = now + frames / sr;
     let mark = 0;
     if (globalThis.performance && performance.now) mark = performance.now();

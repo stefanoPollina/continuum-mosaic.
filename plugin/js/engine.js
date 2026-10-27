@@ -43,14 +43,27 @@ export class Engine {
   }
 
   ensure(state) {
-    if (!this.ctx) {
-      const AC = window.AudioContext || window.webkitAudioContext;
-      this.ctx = new AC({ latencyHint: 'interactive' });
-    }
-    const resumePromise = this.ctx.resume();
-    if (this.ready) return resumePromise;
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return Promise.reject(new Error('This browser has no Web Audio.'));
+    if (!this.ctx) this.ctx = new AC();
+    const ctx = this.ctx;
+    if (ctx.state === 'suspended' || ctx.state === 'interrupted') ctx.resume();
+    this.unlock();
+    if (!this.gate) this.buildFx();
+    if (this.ready) return Promise.resolve();
     if (!this.starting) this.starting = this.boot(state);
-    return Promise.all([resumePromise, this.starting]).then(() => undefined);
+    return this.starting;
+  }
+
+  unlock() {
+    if (this.unlocked || !this.ctx) return;
+    this.unlocked = true;
+    const ctx = this.ctx;
+    const buffer = ctx.createBuffer(1, 1, ctx.sampleRate);
+    const src = ctx.createBufferSource();
+    src.buffer = buffer;
+    src.connect(ctx.destination);
+    try { src.start(0); } catch (err) { /* already started */ }
   }
 
   async boot(state) {
@@ -63,13 +76,16 @@ export class Engine {
       outputChannelCount: [2]
     });
     this.node.port.onmessage = (event) => {
-      if (event.data && event.data.type === 'meter' && this.onMeter) this.onMeter(event.data);
+      const data = event.data;
+      if (!data) return;
+      if (data.type === 'ready') this.setState(this.state);
+      else if (data.type === 'meter' && this.onMeter) this.onMeter(data);
     };
-    this.buildFx();
     this.node.connect(this.gate);
     this.ready = true;
     if (state) this.setState(state);
-    if (ctx.state === 'suspended') await ctx.resume();
+    if (ctx.state !== 'running') await ctx.resume();
+    this.setState(this.state);
   }
 
   buildFx() {
@@ -205,8 +221,9 @@ export class Engine {
   }
 
   setState(state) {
+    if (!state) return;
     this.state = state;
-    if (!this.ready) return;
+    if (!this.ready || !this.node) return;
     this.node.port.postMessage({ type: 'state', state });
     this.applyFx();
   }
@@ -274,7 +291,7 @@ export class Engine {
       set(this.comp.attack, 0.01);
       set(this.comp.release, 0.1);
     }
-    set(this.master.gain, Math.max(0, this.state.master) * 0.72);
+    set(this.master.gain, Math.max(0, this.state.master));
   }
 
   noteOn(id, note, vel = 100, opts = {}) {
