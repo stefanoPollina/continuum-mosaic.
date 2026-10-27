@@ -16,12 +16,11 @@
 }
 
 * { box-sizing: border-box; }
-html, body { height: 100%; }
+html, body { height: 100%; background-color: #07080c; }
 body {
   margin: 0;
-  background:
-    radial-gradient(ellipse at 50% -10%, #243044 0%, transparent 46%),
-    var(--bg);
+  background-color: #07080c;
+  background-image: radial-gradient(ellipse at 50% 0%, #243044 0%, transparent 46%);
   color: var(--text);
   font-family: var(--font);
   overflow: hidden;
@@ -50,7 +49,8 @@ button:focus-visible, .knob:focus-visible, select:focus-visible {
   display: grid;
   grid-template-rows: 58px 34px minmax(0, 1fr) 172px;
   border-radius: 16px;
-  background: linear-gradient(180deg, #1d222d 0%, #141820 28%, #10141b 100%);
+  background-color: #141820;
+  background-image: linear-gradient(180deg, #1d222d 0%, #141820 28%, #10141b 100%);
   box-shadow:
     0 0 0 1px #050608,
     0 0 0 2px #343c4e,

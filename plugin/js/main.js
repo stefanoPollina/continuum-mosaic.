@@ -3,11 +3,15 @@ import { mount } from './ui.js';
 
 const engine = new Engine();
 const stage = document.getElementById('stage');
+const bootNote = document.getElementById('bootNote');
 
 try {
   mount(stage, engine);
+  if (bootNote) bootNote.remove();
 } catch (err) {
-  stage.textContent = err && err.stack ? err.stack : String(err);
+  const message = err && err.message ? err.message : String(err);
+  if (bootNote) bootNote.textContent = message;
+  else stage.textContent = message;
 }
 
 window.addEventListener('error', (event) => {
