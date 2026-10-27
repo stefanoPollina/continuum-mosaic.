@@ -107,8 +107,8 @@ export function mount(stage, engine) {
     const node = el('div', 'brand');
     node.innerHTML = `
       <svg viewBox="0 0 36 36" aria-hidden="true">
-        <rect x="1" y="1" width="34" height="34" rx="8" fill="#10141c" stroke="#e2a84a" stroke-width="1.2"/>
-        <path d="M6 20 H10 L13 10 L18 28 L23 14 L26 20 H30" fill="none" stroke="#e2a84a" stroke-width="1.4" stroke-linejoin="round"/>
+        <rect x="1" y="1" width="34" height="34" rx="8" fill="#111b24" stroke="#efba65" stroke-width="1.2"/>
+        <path d="M6 20 H10 L13 10 L18 28 L23 14 L26 20 H30" fill="none" stroke="#efba65" stroke-width="1.4" stroke-linejoin="round"/>
       </svg>
       <div><strong>CONTINUUM</strong><em>MOSAIC</em><small>SUBTRACTIVE · FM</small></div>`;
     return node;
@@ -1344,7 +1344,7 @@ export function mount(stage, engine) {
   }
 
   function accent() {
-    return getComputedStyle(plugin).getPropertyValue('--accent').trim() || '#e2a84a';
+    return getComputedStyle(plugin).getPropertyValue('--accent').trim() || '#efba65';
   }
 
   function drawWave(canvas, osc, phase) {
@@ -1419,7 +1419,7 @@ export function mount(stage, engine) {
     if (!view) return;
     const { g, width, height } = view;
     g.clearRect(0, 0, width, height);
-    g.strokeStyle = '#6ee0d2';
+    g.strokeStyle = '#7de0ca';
     g.lineWidth = 1.4;
     g.beginPath();
     const p = phase % 1;
@@ -1442,7 +1442,7 @@ export function mount(stage, engine) {
     if (!view) return;
     const { g, width, height } = view;
     g.clearRect(0, 0, width, height);
-    g.strokeStyle = '#e2a84a';
+    g.strokeStyle = '#efba65';
     g.lineWidth = 1.2;
     g.beginPath();
     for (let i = 0; i < data.length; i++) {
