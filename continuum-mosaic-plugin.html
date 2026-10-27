@@ -819,6 +819,75 @@ function acidSteps() {
   }));
 }
 
+function pulseSteps(notes, gates, accents, slides, vels) {
+  return notes.map((note, i) => ({
+    on: !!gates[i],
+    note: 48 + note,
+    vel: vels[i],
+    accent: !!accents[i],
+    slide: !!slides[i]
+  }));
+}
+
+// First Pulse · Fluidic Squelch 01, the performance saved in the original page.
+// Percussion, drone, and handpan from that JSON have no voice here.
+function firstPulseLayers(s) {
+  s.master = 0.7;
+  s.polyphony = 6;
+  s.glide = 0.09;
+  s.unison = 1;
+  s.lfo[0] = { wave: 'sine', rate: 2.8, retrig: false };
+  s.lfo[1] = { wave: 'saw', rate: 10.2, retrig: false };
+  s.mod[0].amount = 0;
+  s.mod[1].amount = 0;
+  s.mod[2] = { src: 'lfo2', dest: 'cutoff', amount: 0.08, target: 'B' };
+  s.layers.A.level = 0.85;
+  s.layers.A.fmMode = 'pd';
+  s.layers.A.pdDepth = 0.55;
+  s.layers.A.pdCurve = 'bend';
+  s.layers.A.character = 0;
+  s.layers.A.osc = [
+    osc('square', 1, 0, 0, 0.23),
+    osc('sine', -1, 0, 7, 0.1),
+    osc('sine', 0, 0, 0, 0)
+  ];
+  s.layers.A.filter = { type: 'comb', cutoff: 258, res: 1, comb: 0.73, env: 0.35, lfo: 0.06, key: 0 };
+  s.layers.A.amp = env(0.119, 0.16, 0.5, 0.13);
+  s.layers.A.filt = env(0.119, 0.16, 0.5, 0.13);
+  s.layers.B.enabled = true;
+  s.layers.B.level = 0.75;
+  s.layers.B.fmMode = 'off';
+  s.layers.B.character = 0;
+  s.layers.B.osc = [
+    osc('saw', -1, 0, 0, 0.64),
+    osc('saw', -1, 0, 7, 0.24),
+    osc('sine', 0, 0, 0, 0)
+  ];
+  s.layers.B.filter = { type: 'lowpass', cutoff: 117, res: 0.88, comb: 0.24, env: 0.35, lfo: 0, key: 0 };
+  s.layers.B.amp = env(0.139, 0.421, 0.62, 0.13);
+  s.layers.B.filt = env(0.139, 0.421, 0.62, 0.13);
+  s.fx.delaySync = 'free';
+  s.fx.delayTime = 0.29;
+  s.fx.delayFb = 0.35;
+  s.fx.delayWet = 0.24;
+  s.fx.phaserOn = true;
+  s.fx.phaserWet = 0.33;
+  s.fx.phaserRate = 0.15;
+  s.fx.phaserDepth = 0.82;
+  s.fx.multiOn = true;
+  s.fx.multiTime = 0.154;
+  s.fx.multiFb = 0.57;
+  s.fx.multiWet = 0.25;
+  s.fx.reverbWet = 0;
+  s.fx.reverbDecay = 2.2;
+  s.fx.shimmerOn = false;
+  s.fx.compOn = true;
+  s.fx.compThreshold = -24;
+  s.fx.compRatio = 8;
+  s.fx.compAttack = 0.012;
+  s.fx.compRelease = 0.22;
+}
+
 function preset(name, edit) {
   const state = defaultState();
   state.name = name;
@@ -1236,6 +1305,36 @@ const FACTORY = [
       accent: i % 4 === 0,
       slide: i % 5 === 4
     }));
+  }),
+  preset('First Pulse', (s) => {
+    firstPulseLayers(s);
+    s.seq.bpm = 120;
+    s.seq.swing = 0;
+    s.seq.division = 0.25;
+    s.seq.length = 16;
+    s.seq.target = 'A';
+    s.seq.steps = pulseSteps(
+      [0, 0, 7, 0, 12, 7, 5, 7, 0, 3, 7, 10, 12, 7, 5, 0],
+      [1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1],
+      [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+      [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+      [105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105]
+    );
+  }),
+  preset('Fluidic Counter', (s) => {
+    firstPulseLayers(s);
+    s.seq.bpm = 120;
+    s.seq.swing = 0;
+    s.seq.division = 1;
+    s.seq.length = 16;
+    s.seq.target = 'B';
+    s.seq.steps = pulseSteps(
+      [0, 7, 12, 5, 10, 3, 15, 0, 7, 12, 3, 5, 10, 0, 12, 7],
+      [1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1],
+      [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+      [1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+      [71, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105]
+    );
   })
 ];
 
