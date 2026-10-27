@@ -43,14 +43,14 @@ export class Engine {
   }
 
   ensure(state) {
-    if (this.ready) return Promise.resolve();
     if (!this.ctx) {
       const AC = window.AudioContext || window.webkitAudioContext;
-      this.ctx = new AC();
-      this.ctx.resume();
+      this.ctx = new AC({ latencyHint: 'interactive' });
     }
+    const resumePromise = this.ctx.resume();
+    if (this.ready) return resumePromise;
     if (!this.starting) this.starting = this.boot(state);
-    return this.starting;
+    return Promise.all([resumePromise, this.starting]).then(() => undefined);
   }
 
   async boot(state) {

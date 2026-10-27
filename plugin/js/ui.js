@@ -860,12 +860,7 @@ export function mount(stage, engine) {
     err.id = 'bootError';
     card.append(err);
     overlay.append(card);
-    const start = (event) => {
-      if (event) event.preventDefault();
-      onGesture();
-    };
-    overlay.addEventListener('pointerdown', start);
-    button.addEventListener('click', start);
+    overlay.addEventListener('click', () => onGesture());
   }
 
   function buildModal() {
@@ -1220,8 +1215,15 @@ export function mount(stage, engine) {
   }
 
   function onGesture(after) {
-    overlay.hidden = true;
     const pending = engine.ensure(state).then(() => {
+      if (!engine.ctx || engine.ctx.state === 'suspended') {
+        overlay.hidden = false;
+        statusNode.textContent = 'Click START to enable audio';
+        const box = plugin.querySelector('#bootError');
+        if (box) box.textContent = 'The browser blocked audio. Click START.';
+        return;
+      }
+      overlay.hidden = true;
       statusNode.textContent = 'Audio on';
       if (!midiLive) {
         midiLive = true;
