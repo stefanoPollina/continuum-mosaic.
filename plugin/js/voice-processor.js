@@ -374,8 +374,8 @@ class MosaicProcessor extends AudioWorkletProcessor {
     if (!Lch) return true;
     const Rch = out[1] || Lch;
     const frames = Lch.length;
-    const sr = this.sr || sampleRate;
-    const now = this.now || currentTime;
+    const sr = this.sr == null ? sampleRate : this.sr;
+    const now = this.now == null ? currentTime : this.now;
     const end = now + frames / sr;
     let mark = 0;
     if (globalThis.performance && performance.now) mark = performance.now();

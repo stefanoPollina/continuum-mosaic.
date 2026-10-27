@@ -364,7 +364,7 @@ export const FACTORY = [
 
 const STORAGE = 'continuum-mosaic-presets-v1';
 const LAST = 'continuum-mosaic-last-preset';
-const LAST_STATE = 'continuum-mosaic-last-state';
+const LAST_STATE = 'continuum-mosaic-last-state-v2';
 
 export function loadUserPresets() {
   try {

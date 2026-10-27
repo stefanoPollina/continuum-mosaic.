@@ -1237,9 +1237,6 @@ export function mount(stage, engine) {
         });
       }
       engine.setState(state);
-      const layer = state.layers.A.enabled ? 'A' : 'B';
-      engine.noteOn('boot', 60, 110, { layer });
-      setTimeout(() => engine.noteOff('boot'), 240);
       if (after) after();
     }).catch((err) => {
       const box = plugin.querySelector('#bootError');
