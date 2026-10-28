@@ -994,7 +994,7 @@ function cmPanBindNote(button,note,octaveShift){
 }
 </script>
 <script>
-'use strict';const $=id=>document.getElementById(id),rack=$('rack');let ac=null,analyser=null,master=null,delay=null,feedback=null,wet=null,dry=null,fxIn=null,fxOut=null;let running=false,timer=null,nextTime=0,tick=0,connections=[],selectedPort=null;const engines={};window.cmSynthEngines=engines;const specs={};const outputPorts=new Set(),types={};
+'use strict';const $=id=>document.getElementById(id),rack=$('rack');let ac=null,analyser=null,master=null,delay=null,feedback=null,wet=null,dry=null,fxIn=null,fxOut=null;let running=false,timer=null,nextTime=0,tick=0,connections=[],selectedPort=null;const engines={};const specs={};const outputPorts=new Set(),types={};
 function module(id,title,x,y,cls=''){const s=document.createElement('section');s.id=id;s.className='module '+cls;s.style.left=x+'px';s.style.top=y+'px';s.innerHTML=`<h2>${title}</h2><div class="inside"></div>`;rack.append(s);return s.querySelector('.inside')}
 function control(host,label,id,min,max,value,step=1){const d=document.createElement('div');d.className='control';d.innerHTML=`<label for="${id}">${label}</label><input id="${id}" type="range" min="${min}" max="${max}" value="${value}" step="${step}"><output>${value}</output>`;host.append(d);return $(id)}
 function choice(host,label,id,values,selected){const d=document.createElement('div');d.className='control';d.innerHTML=`<label for="${id}">${label}</label><select id="${id}">${values.map(v=>`<option value="${v}" ${v===selected?'selected':''}>${v}</option>`).join('')}</select><output></output>`;host.append(d);return $(id)}
@@ -1876,13 +1876,14 @@ const presetStorageKey='continuum-mosaic-performance-bank-v1';const legacyPreset
 try{const saved=JSON.parse(localStorage.getItem(presetStorageKey)||'[]');if(Array.isArray(saved))presetBank=saved.filter(p=>p&&typeof p.name==='string'&&p.patch&&typeof p.patch==='object'&&!/First Pulse|Fluidic Squelch|Ecstatic 132|analog squelch/i.test(p.name))}catch(err){}
 function bankStatus(message){$('presetBankStatus').textContent=message}
 function bankPersist(){try{localStorage.setItem(presetStorageKey,JSON.stringify(presetBank));return true}catch(err){bankStatus('Browser storage unavailable or full. Export the bank JSON to preserve these presets.');return false}}
-function bankRender(selected){const el=$('presetSelect');el.replaceChildren();const placeholder=document.createElement('option');placeholder.value='';placeholder.textContent='Empty workspace · select a performance to load';el.append(placeholder);presetBank.forEach((p,i)=>{const opt=document.createElement('option');opt.value=String(i);opt.textContent=p.name;el.append(opt)});if(selected!==undefined)el.value=String(selected)}
+function cmPresetLabel(name){const raw=String(name||'');return /_SEQ\s*$/i.test(raw)?('SEQ · '+raw.replace(/_SEQ\s*$/i,'').trim()):raw}
+function bankRender(selected){const el=$('presetSelect');el.replaceChildren();const placeholder=document.createElement('option');placeholder.value='';placeholder.textContent='Empty workspace · select a performance to load';el.append(placeholder);presetBank.forEach((p,i)=>{const opt=document.createElement('option');opt.value=String(i);opt.textContent=cmPresetLabel(p.name);opt.title=p.name;el.append(opt)});if(selected!==undefined)el.value=String(selected)}
 function bankDownload(data,filename){const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),2500)}
 // Performance bank v2: isolated snapshots, safe imports, explicit recall and transport.
 function cmPerfHash(p){return JSON.stringify(p)}
 function cmPerfSelected(){const v=$('presetSelect').value;return v===''?null:presetBank[Number(v)]||null}
 function cmPerfPatternCount(s){let n=0;const add=a=>{if(Array.isArray(a))n+=a.filter(x=>x===1||x===true||x?.gate===true).length};for(const k of ['A','B']){if(s.engines?.[k]?.enabled!==false&&!s.engines?.[k]?.muted)add(s.engines?.[k]?.steps);if(s.rhythm?.enabled?.[k])add(s.rhythm?.pattern?.[k])}if(s.drums?.enabled)s.drums.pattern?.forEach(add);if(s.tonal?.enabled)add(s.tonal.steps);if(s.drone?.enabled)add(s.drone.steps);if(s.earth?.enabled)s.earth.lanes?.forEach(l=>{if(!l.mute)add(l.steps)});return n}
-function cmPerfInfo(){const p=cmPerfSelected(),el=$('cmPerfInfo');if(!p){el.textContent=presetBank.length+' saved performances · choose one to inspect';return}const n=cmPerfPatternCount(p.patch);el.textContent='"'+p.name+'" · '+n+' active note/step events · Synth A '+(p.patch.engines?.A?.enabled?'ON':'OFF')+' / Synth B '+(p.patch.engines?.B?.enabled?'ON':'OFF')+(n?' · ready to load and play':' · settings-only or empty pattern: no sequenced sound expected')}
+function cmPerfInfo(){const p=cmPerfSelected(),el=$('cmPerfInfo');if(!p){el.textContent=presetBank.length+' saved performances · choose one to inspect';return}const n=cmPerfPatternCount(p.patch);el.textContent='"'+cmPresetLabel(p.name)+'" · '+n+' active note/step events · Synth A '+(p.patch.engines?.A?.enabled?'ON':'OFF')+' / Synth B '+(p.patch.engines?.B?.enabled?'ON':'OFF')+(n?' · ready to load and play':' · settings-only or empty pattern: no sequenced sound expected')}
 $('presetSelect').addEventListener('change',cmPerfInfo);
 function cmPerfAdd(p){if(!p||typeof p.name!=='string'||!p.patch||typeof p.patch!=='object'||!p.patch.engines)return 'invalid';if(presetBank.some(q=>cmPerfHash(q.patch)===cmPerfHash(p.patch)))return 'duplicate';presetBank.push({name:p.name,patch:structuredClone(p.patch)});return 'added'}
 $('presetCapture').onclick=()=>{const name=prompt('Performance name (same name updates the selected performance):',cmPerfSelected()?.name||'New Performance '+(presetBank.length+1));if(!name?.trim())return;const patch=structuredClone(state()),selected=$('presetSelect').value,index=selected===''?-1:Number(selected);if(index>=0&&presetBank[index]&&presetBank[index].name===name.trim()){if(!confirm('Update the selected performance with the current workspace?'))return;presetBank[index]={name:name.trim(),patch};bankPersist();bankRender(index);bankStatus('Updated '+name.trim());}else{presetBank.push({name:name.trim(),patch});bankPersist();bankRender(presetBank.length-1);bankStatus('Saved '+name.trim()+' · '+cmPerfPatternCount(patch)+' playable steps')}cmPerfInfo()};
@@ -2143,8 +2144,8 @@ const cm30tEngineKey='continuum-mosaic-engine-beta-v1';
 function cm30tRead(key){try{const a=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(a)?a:[]}catch(e){return []}}
 function cm30tWrite(key,data){try{localStorage.setItem(key,JSON.stringify(data));return true}catch(e){bankStatus('Browser storage unavailable. Export a JSON patch to preserve your work.');return false}}
 let cm30tLabs=cm30tRead(cm30tLabKey),cm30tEngineBank=cm30tRead(cm30tEngineKey);
-function cm30tRenderLabs(){const el=$('cm30tLabSelect');el.replaceChildren(new Option('No laboratory preset selected',''));cm30tLabs.forEach((p,i)=>el.add(new Option(p.name,String(i))))}
-function cm30tRenderEngine(){const k=$('cm30tEngine').value,el=$('cm30tEnginePresets');el.replaceChildren(new Option('Choose an engine preset',''));cm30tEngineBank.forEach((p,i)=>{if(p.engine===k)el.add(new Option(p.name,String(i)))})}
+function cm30tRenderLabs(){const el=$('cm30tLabSelect');el.replaceChildren(new Option('No laboratory preset selected',''));cm30tLabs.forEach((p,i)=>{const opt=new Option(cmPresetLabel(p.name),String(i));opt.title=p.name;el.add(opt)})}
+function cm30tRenderEngine(){const k=$('cm30tEngine').value,el=$('cm30tEnginePresets');el.replaceChildren(new Option('Choose an engine preset',''));cm30tEngineBank.forEach((p,i)=>{if(p.engine===k){const opt=new Option(cmPresetLabel(p.name),String(i));opt.title=p.name;el.add(opt)}})}
 $('cm30tLabStore').onclick=()=>{const name=prompt('Laboratory preset name:');if(!name?.trim())return;cm30tLabs.push({name:name.trim(),patch:structuredClone(state())});cm30tWrite(cm30tLabKey,cm30tLabs);cm30tRenderLabs();$('cm30tLabSelect').value=String(cm30tLabs.length-1)};
 $('cm30tLabRecall').onclick=async()=>{const i=$('cm30tLabSelect').value;if(i===''||!cm30tLabs[Number(i)])return;cmStopForTransition();await applyPresetState(structuredClone(cm30tLabs[Number(i)].patch));$('sceneStatus').textContent='Laboratory preset recalled: '+cm30tLabs[Number(i)].name};
 $('cm30tEngine').onchange=cm30tRenderEngine;
@@ -3979,7 +3980,7 @@ function ready(){
  const savedKey='continuum-mosaic-acid-patterns-v1';
  try{window.cmAcidUserBank=JSON.parse(localStorage.getItem(savedKey)||'[]')}catch(e){window.cmAcidUserBank=[]}
  if(!Array.isArray(window.cmAcidUserBank))window.cmAcidUserBank=[];
- function importToSelector(){const sel=document.getElementById('cmAcidPattern');if(!sel)return;sel.querySelectorAll('[data-cm-user]').forEach(o=>o.remove());window.cmAcidUserBank.forEach((p,i)=>{const o=new Option(p.name+' · '+(p.origin==='user-created'?'My Preset':'Imported'),'user:'+i);o.dataset.cmUser='1';sel.add(o)})}
+ function importToSelector(){const sel=document.getElementById('cmAcidPattern');if(!sel)return;sel.querySelectorAll('[data-cm-user]').forEach(o=>o.remove());window.cmAcidUserBank.forEach((p,i)=>{const o=new Option(cmPresetLabel(p.name)+' · '+(p.origin==='user-created'?'My Preset':'Imported'),'user:'+i);o.title=p.name;o.dataset.cmUser='1';sel.add(o)})}
  importToSelector();
  // Import loads user patterns into existing engine step structures without overwriting originals.
  const load=document.getElementById('cmAcidLoad');load?.addEventListener('click',()=>{const sel=document.getElementById('cmAcidPattern');if(!sel?.value.startsWith('user:'))return;const p=window.cmAcidUserBank[Number(sel.value.slice(5))],k=document.getElementById('cmAcidDestination').value,e=engines[k];if(!p||!e)return;for(let i=0;i<16;i++)Object.assign(e.steps[i],p.steps[i]||{gate:false});renderSeq(k);status.textContent='Imported pattern loaded into Synth '+k;},true);
@@ -5500,7 +5501,7 @@ const ui=document.createElement('section');ui.id='cmSoundBanks';
 ui.innerHTML=`<h3>SYNTH SOUND BANKS · LIVE RECALL</h3>
 <div class="cmBankLine"><label for="cmSBTarget">Sound destination</label><select id="cmSBTarget"><option value="A">Synth A</option><option value="B">Synth B</option><option value="AB">A + B</option></select><select id="cmSBSelect" aria-label="Sound preset"><option value="">Choose sound</option></select></div>
 <p class="cmBankHint">To recall: choose Synth A, Synth B or A+B; select a previously stored sound; then press RECALL SOUND. To create your first entry, adjust the synth controls and press STORE SOUND.</p><div class="cmBankLine"><button id="cmSBPrev" type="button">◀ PREVIOUS</button><button id="cmSBNext" type="button">NEXT ▶</button><button id="cmSBRecall" type="button">RECALL SOUND</button><button id="cmSBStore" type="button">STORE SOUND</button></div>
-<details><summary>Manage sound banks</summary><div class="cmBankLine"><button id="cmSBExport" type="button">EXPORT SOUND BANK</button><button id="cmSBImport" type="button">IMPORT SOUND BANK</button><button id="cmSBDelete" type="button">REMOVE SOUND</button><input id="cmSBFile" type="file" accept=".json,application/json" hidden></div><p class="cmBankHint">A name ending in _SEQ stores the sound and that engine’s note sequence together. Any other name stores the sound only.</p></details><div class="cmBankStatus" id="cmSBStatus" role="status">Sound bank ready</div>`;
+<details><summary>Manage sound banks</summary><div class="cmBankLine"><button id="cmSBExport" type="button">EXPORT SOUND BANK</button><button id="cmSBImport" type="button">IMPORT SOUND BANK</button><button id="cmSBDelete" type="button">REMOVE SOUND</button><input id="cmSBFile" type="file" accept=".json,application/json" hidden></div><p class="cmBankHint">A preset named with _SEQ is shown here as SEQ. The saved sound and sequence are unchanged.</p></details><div class="cmBankStatus" id="cmSBStatus" role="status">Sound bank ready</div>`;
 const fx=$('cmKeyboardLiveFX');fx?fx.before(ui):host.prepend(ui);
 const target=$('cmSBTarget'),select=$('cmSBSelect'),status=$('cmSBStatus');
 const save=()=>{try{localStorage.setItem(STORE,JSON.stringify(bank));return true}catch(e){status.textContent='Storage unavailable. Export your sound bank.';return false}};
@@ -5518,37 +5519,15 @@ function ids(k){
  }).map(el=>el.id);
 }
 function capture(k){const data={};for(const id of ids(k)){const el=$(id);data[id]=el.type==='checkbox'?el.checked:el.value}return data}
-const seqPreset=/_SEQ\s*$/i;
-function seqSnapshot(k){
- const live=window.cmSynthEngines&&window.cmSynthEngines[k];
- if(!live||!Array.isArray(live.steps))return null;
- const read=id=>{const el=$(k+id);return el?el.value:undefined};
- return {steps:structuredClone(live.steps),len:read('len'),div:read('div'),glen:read('glen'),glide:read('glide'),size:read('size'),enabled:!!live.enabled,muted:!!live.muted};
-}
-function recallSeq(k,snap){
- const live=window.cmSynthEngines&&window.cmSynthEngines[k];
- if(!live||!snap||!Array.isArray(snap.steps))return false;
- live.steps=structuredClone(snap.steps);
- live.enabled=!!snap.enabled;
- live.muted=!!snap.muted;
- live.selected=0;
- for(const id of ['len','div','glen','glide','size']){const el=$(k+id);if(el&&snap[id]!=null){el.value=snap[id];el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}))}}
- if(typeof loadStep==='function')loadStep(k);
- if(typeof renderSeq==='function')renderSeq(k);
- if(typeof buttons==='function')buttons(k);
- return true;
-}
-function refresh(){const t=target.value,prev=select.value;select.replaceChildren(new Option('Choose sound',''));bank.forEach((p,i)=>{if(p&&p.engines&&((t==='AB'&&p.engines.A&&p.engines.B)||(t!=='AB'&&p.engines[t])))select.add(new Option(p.name,String(i)))});if([...select.options].some(o=>o.value===prev))select.value=prev;status.textContent=(bank.length?bank.length+' sound preset'+(bank.length===1?'':'s')+' stored · ':'No saved sounds yet · press STORE SOUND · ')+(t==='AB'?'A+B':t)}
+function refresh(){const t=target.value,prev=select.value;select.replaceChildren(new Option('Choose sound',''));bank.forEach((p,i)=>{if(p&&p.engines&&((t==='AB'&&p.engines.A&&p.engines.B)||(t!=='AB'&&p.engines[t]))){const opt=new Option(cmPresetLabel(p.name),String(i));opt.title=p.name;select.add(opt)}});if([...select.options].some(o=>o.value===prev))select.value=prev;status.textContent=(bank.length?bank.length+' sound preset'+(bank.length===1?'':'s')+' stored · ':'No saved sounds yet · press STORE SOUND · ')+(t==='AB'?'A+B':t)}
 function dispatch(el){el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}))}
 function recall(p){if(!p?.engines)return;for(const k of ['A','B']){if(!p.engines[k])continue;for(const [id,value] of Object.entries(p.engines[k])){const el=$(id);if(!el)continue;if(el.type==='checkbox')el.checked=!!value;else el.value=value;dispatch(el)}}
  // Existing synthesis engine apply() is available from the main application script.
  try{if(typeof apply==='function')apply()}catch(e){console.warn('Sound bank apply:',e)}
- let sequenced=0;
- if(p.seq){for(const k of ['A','B'])if(recallSeq(k,p.seq[k]))sequenced++}
- status.textContent=sequenced?('Recalled '+p.name+' · sound and note sequence'):(seqPreset.test(p.name||'')?('Recalled '+p.name+' · this save has the _SEQ name but no sequence was stored. Store it again to keep the pattern.'):('Recalled '+p.name+' · sound only'));
+ status.textContent='Recalled '+cmPresetLabel(p.name);
 }
 function selected(){return select.value===''?null:bank[Number(select.value)]}
-$('cmSBStore').onclick=()=>{const name=prompt('Sound preset name:','New Sound '+(bank.length+1));if(!name?.trim())return;const t=target.value,keys=t==='AB'?['A','B']:[t],engines={},seq={};for(const k of keys){engines[k]=capture(k);if(seqPreset.test(name)){const snap=seqSnapshot(k);if(snap)seq[k]=snap}}const entry={name:name.trim(),engines};if(seqPreset.test(entry.name))entry.seq=seq;bank.push(entry);save();refresh();select.value=String(bank.length-1);status.textContent=entry.seq?('Stored '+entry.name+' · sound and note sequence'):('Stored '+entry.name+' · sound only')};
+$('cmSBStore').onclick=()=>{const name=prompt('Sound preset name:','New Sound '+(bank.length+1));if(!name?.trim())return;const t=target.value,engines={};for(const k of (t==='AB'?['A','B']:[t]))engines[k]=capture(k);bank.push({name:name.trim(),engines});save();refresh();select.value=String(bank.length-1);status.textContent='Stored '+cmPresetLabel(name.trim())};
 $('cmSBRecall').onclick=()=>{const p=selected();if(p)recall(p);else status.textContent='Select a sound first'};
 function move(delta){const opts=[...select.options].filter(o=>o.value!=='');if(!opts.length)return;let at=opts.findIndex(o=>o.value===select.value);at=(at+delta+opts.length)%opts.length;select.value=opts[at].value;recall(selected())}
 $('cmSBPrev').onclick=()=>move(-1);$('cmSBNext').onclick=()=>move(1);
