@@ -218,8 +218,8 @@ function preset(name, edit) {
 }
 
 export const FACTORY = [
-  preset('Init', () => {}),
-  preset('Continuum Pad', (s) => {
+  preset('Init_SEQ', () => {}),
+  preset('Continuum Pad_SEQ', (s) => {
     s.unison = 2;
     s.detune = 14;
     s.polyphony = 8;
@@ -275,7 +275,7 @@ export const FACTORY = [
     s.seq.target = 'A';
     s.seq.steps = acidSteps();
   }),
-  preset('Supersaw Lead', (s) => {
+  preset('Supersaw Lead_SEQ', (s) => {
     s.unison = 4;
     s.detune = 18;
     s.polyphony = 6;
@@ -296,7 +296,7 @@ export const FACTORY = [
     s.fx.phaserWet = 0.16;
     s.fx.phaserRate = 0.18;
   }),
-  preset('Glass FM', (s) => {
+  preset('Glass FM_SEQ', (s) => {
     s.polyphony = 8;
     s.layers.A.fmMode = 'fm';
     s.layers.A.fmRatio = 2.0;
@@ -314,7 +314,7 @@ export const FACTORY = [
     s.fx.reverbWet = 0.34;
     s.fx.reverbDecay = 3.4;
   }),
-  preset('PWM Keys', (s) => {
+  preset('PWM Keys_SEQ', (s) => {
     s.layers.A.osc = [
       osc('square', 0, 0, 0, 0.72, 0.32),
       osc('square', -1, 0, 4, 0.22, 0.55),
@@ -332,7 +332,7 @@ export const FACTORY = [
     s.fx.phaserWet = 0.12;
     s.fx.phaserRate = 0.15;
   }),
-  preset('Dual Strings', (s) => {
+  preset('Dual Strings_SEQ', (s) => {
     s.unison = 2;
     s.detune = 11;
     s.lfo[0].rate = 0.18;
@@ -359,7 +359,7 @@ export const FACTORY = [
     s.fx.reverbWet = 0.42;
     s.fx.reverbDecay = 3.8;
   }),
-  preset('Comb Drift', (s) => {
+  preset('Comb Drift_SEQ', (s) => {
     s.layers.A.character = 0.45;
     s.layers.A.osc = [
       osc('triangle', 0, 0, 0, 0.7),
@@ -377,7 +377,7 @@ export const FACTORY = [
     s.fx.reverbWet = 0.28;
     s.fx.reverbDecay = 3.2;
   }),
-  preset('Soft Bell', (s) => {
+  preset('Soft Bell_SEQ', (s) => {
     s.layers.A.fmMode = 'both';
     s.layers.A.fmRatio = 3.5;
     s.layers.A.fmIndex = 1.55;
@@ -395,7 +395,7 @@ export const FACTORY = [
     s.fx.reverbWet = 0.4;
     s.fx.reverbDecay = 4.2;
   }),
-  preset('Night Air', (s) => {
+  preset('Night Air_SEQ', (s) => {
     s.unison = 2;
     s.detune = 9;
     s.layers.A.character = 0.35;
@@ -429,7 +429,7 @@ export const FACTORY = [
     s.fx.delayWet = 0.12;
     s.fx.delayFb = 0.3;
   }),
-  preset('Sub Bass', (s) => {
+  preset('Sub Bass_SEQ', (s) => {
     s.polyphony = 1;
     s.glide = 0.04;
     s.layers.A.level = 0.9;
@@ -444,7 +444,7 @@ export const FACTORY = [
     s.layers.B.enabled = false;
     s.fx.reverbWet = 0.04;
   }),
-  preset('Reese', (s) => {
+  preset('Reese_SEQ', (s) => {
     s.unison = 2;
     s.detune = 16;
     s.polyphony = 1;
@@ -461,7 +461,7 @@ export const FACTORY = [
     s.fx.drive = 0.18;
     s.fx.reverbWet = 0.08;
   }),
-  preset('Hoover', (s) => {
+  preset('Hoover_SEQ', (s) => {
     s.unison = 4;
     s.detune = 22;
     s.polyphony = 4;
@@ -481,7 +481,7 @@ export const FACTORY = [
     s.fx.delayFb = 0.22;
     s.fx.reverbWet = 0.16;
   }),
-  preset('Chapel Organ', (s) => {
+  preset('Chapel Organ_SEQ', (s) => {
     s.polyphony = 6;
     s.layers.A.level = 0.74;
     s.layers.A.osc = [
@@ -503,7 +503,7 @@ export const FACTORY = [
     s.fx.reverbWet = 0.32;
     s.fx.reverbDecay = 3.6;
   }),
-  preset('Mute Pluck', (s) => {
+  preset('Mute Pluck_SEQ', (s) => {
     s.polyphony = 8;
     s.layers.A.level = 0.8;
     s.layers.A.osc = [
@@ -518,7 +518,7 @@ export const FACTORY = [
     s.fx.reverbWet = 0.22;
     s.fx.reverbDecay = 2.4;
   }),
-  preset('Fifth Bell', (s) => {
+  preset('Fifth Bell_SEQ', (s) => {
     s.polyphony = 6;
     s.layers.A.fmMode = 'fm';
     s.layers.A.fmRatio = 1.5;
@@ -535,7 +535,7 @@ export const FACTORY = [
     s.fx.reverbWet = 0.36;
     s.fx.reverbDecay = 4.6;
   }),
-  preset('Slow Choir', (s) => {
+  preset('Slow Choir_SEQ', (s) => {
     s.unison = 2;
     s.detune = 8;
     s.polyphony = 6;
@@ -563,7 +563,7 @@ export const FACTORY = [
     s.fx.shimmerOn = true;
     s.fx.shimmerLevel = 0.1;
   }),
-  preset('Brass Stab', (s) => {
+  preset('Brass Stab_SEQ', (s) => {
     s.unison = 2;
     s.detune = 7;
     s.polyphony = 4;
@@ -581,7 +581,7 @@ export const FACTORY = [
     s.fx.delaySync = '1/8';
     s.fx.delayWet = 0.08;
   }),
-  preset('Pulse Sweep', (s) => {
+  preset('Pulse Sweep_SEQ', (s) => {
     s.polyphony = 6;
     s.layers.A.level = 0.76;
     s.layers.A.osc = [
