@@ -994,7 +994,7 @@ function cmPanBindNote(button,note,octaveShift){
 }
 </script>
 <script>
-'use strict';const $=id=>document.getElementById(id),rack=$('rack');let ac=null,analyser=null,master=null,delay=null,feedback=null,wet=null,dry=null,fxIn=null,fxOut=null;let running=false,timer=null,nextTime=0,tick=0,connections=[],selectedPort=null;const engines={};const specs={};const outputPorts=new Set(),types={};
+'use strict';const $=id=>document.getElementById(id),rack=$('rack');let ac=null,analyser=null,master=null,delay=null,feedback=null,wet=null,dry=null,fxIn=null,fxOut=null;let running=false,timer=null,nextTime=0,tick=0,connections=[],selectedPort=null;const engines={};window.cmSynthEngines=engines;const specs={};const outputPorts=new Set(),types={};
 function module(id,title,x,y,cls=''){const s=document.createElement('section');s.id=id;s.className='module '+cls;s.style.left=x+'px';s.style.top=y+'px';s.innerHTML=`<h2>${title}</h2><div class="inside"></div>`;rack.append(s);return s.querySelector('.inside')}
 function control(host,label,id,min,max,value,step=1){const d=document.createElement('div');d.className='control';d.innerHTML=`<label for="${id}">${label}</label><input id="${id}" type="range" min="${min}" max="${max}" value="${value}" step="${step}"><output>${value}</output>`;host.append(d);return $(id)}
 function choice(host,label,id,values,selected){const d=document.createElement('div');d.className='control';d.innerHTML=`<label for="${id}">${label}</label><select id="${id}">${values.map(v=>`<option value="${v}" ${v===selected?'selected':''}>${v}</option>`).join('')}</select><output></output>`;host.append(d);return $(id)}
@@ -5500,7 +5500,7 @@ const ui=document.createElement('section');ui.id='cmSoundBanks';
 ui.innerHTML=`<h3>SYNTH SOUND BANKS · LIVE RECALL</h3>
 <div class="cmBankLine"><label for="cmSBTarget">Sound destination</label><select id="cmSBTarget"><option value="A">Synth A</option><option value="B">Synth B</option><option value="AB">A + B</option></select><select id="cmSBSelect" aria-label="Sound preset"><option value="">Choose sound</option></select></div>
 <p class="cmBankHint">To recall: choose Synth A, Synth B or A+B; select a previously stored sound; then press RECALL SOUND. To create your first entry, adjust the synth controls and press STORE SOUND.</p><div class="cmBankLine"><button id="cmSBPrev" type="button">◀ PREVIOUS</button><button id="cmSBNext" type="button">NEXT ▶</button><button id="cmSBRecall" type="button">RECALL SOUND</button><button id="cmSBStore" type="button">STORE SOUND</button></div>
-<details><summary>Manage sound banks</summary><div class="cmBankLine"><button id="cmSBExport" type="button">EXPORT SOUND BANK</button><button id="cmSBImport" type="button">IMPORT SOUND BANK</button><button id="cmSBDelete" type="button">REMOVE SOUND</button><input id="cmSBFile" type="file" accept=".json,application/json" hidden></div><p class="cmBankHint">Sound presets store engine sound parameters, not note sequences. Original performance presets and engine-pattern presets remain available.</p></details><div class="cmBankStatus" id="cmSBStatus" role="status">Sound bank ready</div>`;
+<details><summary>Manage sound banks</summary><div class="cmBankLine"><button id="cmSBExport" type="button">EXPORT SOUND BANK</button><button id="cmSBImport" type="button">IMPORT SOUND BANK</button><button id="cmSBDelete" type="button">REMOVE SOUND</button><input id="cmSBFile" type="file" accept=".json,application/json" hidden></div><p class="cmBankHint">A name ending in _SEQ stores the sound and that engine’s note sequence together. Any other name stores the sound only.</p></details><div class="cmBankStatus" id="cmSBStatus" role="status">Sound bank ready</div>`;
 const fx=$('cmKeyboardLiveFX');fx?fx.before(ui):host.prepend(ui);
 const target=$('cmSBTarget'),select=$('cmSBSelect'),status=$('cmSBStatus');
 const save=()=>{try{localStorage.setItem(STORE,JSON.stringify(bank));return true}catch(e){status.textContent='Storage unavailable. Export your sound bank.';return false}};
@@ -5518,15 +5518,37 @@ function ids(k){
  }).map(el=>el.id);
 }
 function capture(k){const data={};for(const id of ids(k)){const el=$(id);data[id]=el.type==='checkbox'?el.checked:el.value}return data}
+const seqPreset=/_SEQ\s*$/i;
+function seqSnapshot(k){
+ const live=window.cmSynthEngines&&window.cmSynthEngines[k];
+ if(!live||!Array.isArray(live.steps))return null;
+ const read=id=>{const el=$(k+id);return el?el.value:undefined};
+ return {steps:structuredClone(live.steps),len:read('len'),div:read('div'),glen:read('glen'),glide:read('glide'),size:read('size'),enabled:!!live.enabled,muted:!!live.muted};
+}
+function recallSeq(k,snap){
+ const live=window.cmSynthEngines&&window.cmSynthEngines[k];
+ if(!live||!snap||!Array.isArray(snap.steps))return false;
+ live.steps=structuredClone(snap.steps);
+ live.enabled=!!snap.enabled;
+ live.muted=!!snap.muted;
+ live.selected=0;
+ for(const id of ['len','div','glen','glide','size']){const el=$(k+id);if(el&&snap[id]!=null){el.value=snap[id];el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}))}}
+ if(typeof loadStep==='function')loadStep(k);
+ if(typeof renderSeq==='function')renderSeq(k);
+ if(typeof buttons==='function')buttons(k);
+ return true;
+}
 function refresh(){const t=target.value,prev=select.value;select.replaceChildren(new Option('Choose sound',''));bank.forEach((p,i)=>{if(p&&p.engines&&((t==='AB'&&p.engines.A&&p.engines.B)||(t!=='AB'&&p.engines[t])))select.add(new Option(p.name,String(i)))});if([...select.options].some(o=>o.value===prev))select.value=prev;status.textContent=(bank.length?bank.length+' sound preset'+(bank.length===1?'':'s')+' stored · ':'No saved sounds yet · press STORE SOUND · ')+(t==='AB'?'A+B':t)}
 function dispatch(el){el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}))}
 function recall(p){if(!p?.engines)return;for(const k of ['A','B']){if(!p.engines[k])continue;for(const [id,value] of Object.entries(p.engines[k])){const el=$(id);if(!el)continue;if(el.type==='checkbox')el.checked=!!value;else el.value=value;dispatch(el)}}
  // Existing synthesis engine apply() is available from the main application script.
  try{if(typeof apply==='function')apply()}catch(e){console.warn('Sound bank apply:',e)}
- status.textContent='Recalled '+p.name+' · sound controls updated (sequencer patterns unchanged)';
+ let sequenced=0;
+ if(p.seq){for(const k of ['A','B'])if(recallSeq(k,p.seq[k]))sequenced++}
+ status.textContent=sequenced?('Recalled '+p.name+' · sound and note sequence'):(seqPreset.test(p.name||'')?('Recalled '+p.name+' · this save has the _SEQ name but no sequence was stored. Store it again to keep the pattern.'):('Recalled '+p.name+' · sound only'));
 }
 function selected(){return select.value===''?null:bank[Number(select.value)]}
-$('cmSBStore').onclick=()=>{const name=prompt('Sound preset name:','New Sound '+(bank.length+1));if(!name?.trim())return;const t=target.value,engines={};for(const k of (t==='AB'?['A','B']:[t]))engines[k]=capture(k);bank.push({name:name.trim(),engines});save();refresh();select.value=String(bank.length-1);status.textContent='Stored '+name.trim()};
+$('cmSBStore').onclick=()=>{const name=prompt('Sound preset name:','New Sound '+(bank.length+1));if(!name?.trim())return;const t=target.value,keys=t==='AB'?['A','B']:[t],engines={},seq={};for(const k of keys){engines[k]=capture(k);if(seqPreset.test(name)){const snap=seqSnapshot(k);if(snap)seq[k]=snap}}const entry={name:name.trim(),engines};if(seqPreset.test(entry.name))entry.seq=seq;bank.push(entry);save();refresh();select.value=String(bank.length-1);status.textContent=entry.seq?('Stored '+entry.name+' · sound and note sequence'):('Stored '+entry.name+' · sound only')};
 $('cmSBRecall').onclick=()=>{const p=selected();if(p)recall(p);else status.textContent='Select a sound first'};
 function move(delta){const opts=[...select.options].filter(o=>o.value!=='');if(!opts.length)return;let at=opts.findIndex(o=>o.value===select.value);at=(at+delta+opts.length)%opts.length;select.value=opts[at].value;recall(selected())}
 $('cmSBPrev').onclick=()=>move(-1);$('cmSBNext').onclick=()=>move(1);
