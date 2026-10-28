@@ -902,8 +902,18 @@ export function mount(stage, engine) {
     saveUserPresets(user);
     currentId = id;
     saveLastId(id);
-    nameBtn.textContent = name;
+    nameBtn.textContent = presetLabel(name);
+    nameBtn.title = name;
     schedule();
+  }
+
+  function isSeqPreset(name) {
+    return /_SEQ\s*$/i.test(String(name || ''));
+  }
+
+  function presetLabel(name) {
+    const raw = String(name || '');
+    return isSeqPreset(raw) ? ('SEQ · ' + raw.replace(/_SEQ\s*$/i, '').trim()) : raw;
   }
 
   function fillMenu() {
@@ -924,8 +934,10 @@ export function mount(stage, engine) {
   function menuItem(id, name, removable) {
     const button = el('button', id === currentId ? 'on' : '');
     button.type = 'button';
-    const label = el('span', '', name);
+    const label = el('span', '', presetLabel(name));
+    button.title = name;
     button.append(label);
+    if (isSeqPreset(name)) button.append(el('span', 'tag', 'SEQ'));
     if (removable) {
       const kill = el('span', 'kill', '✕');
       kill.addEventListener('click', (event) => {
@@ -937,7 +949,7 @@ export function mount(stage, engine) {
         fillMenu();
       });
       button.append(kill);
-    } else button.append(el('span', 'tag', 'FACTORY'));
+    } else if (!isSeqPreset(name)) button.append(el('span', 'tag', 'FACTORY'));
     button.addEventListener('click', () => {
       loadPreset(id);
       menu.hidden = true;
@@ -1203,7 +1215,8 @@ export function mount(stage, engine) {
 
   function paintAll() {
     widgets.forEach((widget) => widget.paint());
-    nameBtn.textContent = state.name || 'Init';
+    nameBtn.textContent = presetLabel(state.name || 'Init');
+    nameBtn.title = state.name || 'Init';
     plugin.classList.toggle('layer-b', editLayer === 'B');
     const chip = plugin.querySelector('#layerChip');
     if (chip) chip.textContent = 'EDITING ' + editLayer;
