@@ -912,8 +912,7 @@ export function mount(stage, engine) {
   }
 
   function presetLabel(name) {
-    const raw = String(name || '');
-    return isSeqPreset(raw) ? ('SEQ · ' + raw.replace(/_SEQ\s*$/i, '').trim()) : raw;
+    return String(name || '');
   }
 
   function fillMenu() {
