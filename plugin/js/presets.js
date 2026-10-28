@@ -250,7 +250,7 @@ export const FACTORY = [
     s.fx.delayWet = 0.1;
     s.fx.delayFb = 0.22;
   }),
-  preset('Acid Line', (s) => {
+  preset('Acid Line_SEQ', (s) => {
     s.polyphony = 1;
     s.glide = 0.07;
     s.layers.A.level = 0.9;
@@ -601,7 +601,7 @@ export const FACTORY = [
     s.fx.phaserRate = 0.12;
     s.fx.reverbWet = 0.18;
   }),
-  preset('Spark Arp', (s) => {
+  preset('Spark Arp_SEQ', (s) => {
     s.polyphony = 1;
     s.layers.A.level = 0.78;
     s.layers.A.osc = [
@@ -628,7 +628,7 @@ export const FACTORY = [
       slide: i % 5 === 4
     }));
   }),
-  preset('First Pulse', (s) => {
+  preset('First Pulse_SEQ', (s) => {
     firstPulseLayers(s);
     s.seq.bpm = 120;
     s.seq.swing = 0;
@@ -643,7 +643,7 @@ export const FACTORY = [
       [105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105]
     );
   }),
-  preset('Fluidic Counter', (s) => {
+  preset('Fluidic Counter_SEQ', (s) => {
     firstPulseLayers(s);
     s.seq.bpm = 120;
     s.seq.swing = 0;
